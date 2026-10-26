@@ -11,36 +11,36 @@
 ## Phase 0 — Foundation (Weeks 1–2)
 
 ### 0.1 Repository bootstrap
-- [ ] 0.1.1 Create new Git repository `omnimem` (private → public later)
-- [ ] 0.1.2 Initialize Rust workspace (`Cargo.toml` with members)
-- [ ] 0.1.3 Fork mnem workspace into `crates/` (copy structure, rename crate prefixes `mnem-*` → `omnimem-*`)
+ - [x] 0.1.1 Create new Git repository `omnimem` (private → public later)
+ - [x] 0.1.2 Initialize Rust workspace (`Cargo.toml` with members)
+ - [x] 0.1.3 Fork mnem workspace into `crates/` (copy structure, rename crate prefixes `mnem-*` → `omnimem-*`)
 - [ ] 0.1.4 Verify `cargo build` succeeds on Linux/macOS/Windows
 - [ ] 0.1.5 Verify `cargo test --workspace` passes on clean fork
-- [ ] 0.1.6 Set up `.gitignore`, `.gitattributes`, `rust-toolchain.toml` (MSRV 1.95)
-- [ ] 0.1.7 Add `LICENSE` (Apache-2.0) + `NOTICE`
-- [ ] 0.1.8 Add `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`
+ - [x] 0.1.6 Set up `.gitignore`, `.gitattributes`, `rust-toolchain.toml` (MSRV 1.95)
+ - [x] 0.1.7 Add `LICENSE` (Apache-2.0) + `NOTICE`
+ - [x] 0.1.8 Add `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`
 
 ### 0.2 Tooling & CI
-- [ ] 0.2.1 GitHub Actions: build matrix (Linux, macOS, Windows)
-- [ ] 0.2.2 GitHub Actions: `cargo test --workspace`
-- [ ] 0.2.3 GitHub Actions: `cargo clippy -- -D warnings`
-- [ ] 0.2.4 GitHub Actions: `cargo fmt --check`
+ - [x] 0.2.1 GitHub Actions: build matrix (Linux, macOS, Windows)
+ - [x] 0.2.2 GitHub Actions: `cargo test --workspace`
+ - [x] 0.2.3 GitHub Actions: `cargo clippy -- -D warnings`
+ - [x] 0.2.4 GitHub Actions: `cargo fmt --check`
 - [ ] 0.2.5 Pre-commit hooks (rustfmt, clippy)
-- [ ] 0.2.6 Release workflow (tag → build binaries → GitHub Release)
-- [ ] 0.2.7 Dependabot / cargo-deny for supply chain
+ - [x] 0.2.6 Release workflow (tag → build binaries → GitHub Release)
+ - [x] 0.2.7 Dependabot / cargo-deny for supply chain
 
 ### 0.3 Configuration & naming
-- [ ] 0.3.1 Finalize product name (OmniMem vs rename) — decision D1
-- [ ] 0.3.2 Define config file schema (`omnimem.toml`) with sections: `[storage]`, `[embed]`, `[ingest]`, `[retrieval]`, `[lifecycle]`, `[viewer]`
-- [ ] 0.3.3 Implement config loader (TOML, env overrides, defaults)
-- [ ] 0.3.4 Define env vars: `OMNIMEM_STORE`, `OMNIMEM_DATA_DIR`, `OMNIMEM_EMBED_PROVIDER`, etc.
-- [ ] 0.3.5 Define `.omnimem/` (project) vs `~/.omnimem/` (global) data layout
+ - [x] 0.3.1 Finalize product name (OmniMem vs rename) — decision D1
+ - [x] 0.3.2 Define config file schema (`omnimem.toml`) with sections: `[storage]`, `[embed]`, `[ingest]`, `[retrieval]`, `[lifecycle]`, `[viewer]`
+ - [x] 0.3.3 Implement config loader (TOML, env overrides, defaults)
+ - [x] 0.3.4 Define env vars: `OMNIMEM_STORE`, `OMNIMEM_DATA_DIR`, `OMNIMEM_EMBED_PROVIDER`, etc.
+ - [x] 0.3.5 Define `.omnimem/` (project) vs `~/.omnimem/` (global) data layout
 
 ### 0.4 Documentation skeleton
-- [ ] 0.4.1 Create `docs/` mdBook structure (book.toml)
-- [ ] 0.4.2 Write `docs/README.md` (quickstart)
-- [ ] 0.4.3 Write `docs/core-concepts.md`
-- [ ] 0.4.4 Write `docs/configuration.md`
+ - [x] 0.4.1 Create `docs/` mdBook structure (book.toml)
+ - [x] 0.4.2 Write `docs/README.md` (quickstart)
+ - [x] 0.4.3 Write `docs/core-concepts.md`
+ - [x] 0.4.4 Write `docs/configuration.md`
 
 **Phase 0 exit criteria:** clean build on all 3 OSes, tests pass, CI green, config loads.
 
@@ -49,66 +49,66 @@
 ## Phase 1 — Core Memory (Weeks 3–5)
 
 ### 1.1 Node & edge model
-- [ ] 1.1.1 Define `Node` struct: id (UUID), cid (BLAKE3), ntype, summary, content, props, created_at, updated_at, valid_from, valid_to (bi-temporal)
-- [ ] 1.1.2 Define `Edge` struct: src, dst, etype, props, weight, created_at, valid_from, valid_to
-- [ ] 1.1.3 Define node types: `Fact`, `Decision`, `Convention`, `Entity:*`, `Doc`, `Chunk`, `CodeSymbol`, `Task`, `Incident`, `Lesson`
-- [ ] 1.1.4 Implement bi-temporal fields (valid_from/valid_to) on nodes and edges (engraphis)
-- [ ] 1.1.5 Unit tests for node/edge serialization (DAG-CBOR)
+ - [x] 1.1.1 Define `Node` struct: id (UUID), cid (BLAKE3), ntype, summary, content, props, created_at, updated_at, valid_from, valid_to (bi-temporal)
+ - [x] 1.1.2 Define `Edge` struct: src, dst, etype, props, weight, created_at, valid_from, valid_to
+ - [x] 1.1.3 Define node types: `Fact`, `Decision`, `Convention`, `Entity:*`, `Doc`, `Chunk`, `CodeSymbol`, `Task`, `Incident`, `Lesson`
+ - [x] 1.1.4 Implement bi-temporal fields (valid_from/valid_to) on nodes and edges (engraphis)
+ - [x] 1.1.5 Unit tests for node/edge serialization (DAG-CBOR)
 
 ### 1.2 Content addressing
-- [ ] 1.2.1 Implement canonical DAG-CBOR encoding
-- [ ] 1.2.2 Implement BLAKE3 CID generation
-- [ ] 1.2.3 Verify determinism: same input → same CID on all platforms
-- [ ] 1.2.4 Implement CID-based deduplication
+ - [x] 1.2.1 Implement canonical DAG-CBOR encoding
+ - [x] 1.2.2 Implement BLAKE3 CID generation
+ - [x] 1.2.3 Verify determinism: same input → same CID on all platforms
+ - [x] 1.2.4 Implement CID-based deduplication
 
 ### 1.3 Storage backend (redb)
-- [ ] 1.3.1 Integrate redb (single-writer, multi-reader)
-- [ ] 1.3.2 Implement node table, edge table, index tables
-- [ ] 1.3.3 Implement transactional commit (all-or-nothing)
-- [ ] 1.3.4 Implement read snapshot isolation
-- [ ] 1.3.5 Concurrency tests (1 writer + N readers)
+ - [x] 1.3.1 Integrate redb (single-writer, multi-reader)
+ - [x] 1.3.2 Implement node table, edge table, index tables
+ - [x] 1.3.3 Implement transactional commit (all-or-nothing)
+ - [x] 1.3.4 Implement read snapshot isolation
+ - [x] 1.3.5 Concurrency tests (1 writer + N readers)
 
 ### 1.4 Commit DAG & versioning
-- [ ] 1.4.1 Define `Commit` struct: cid, parent(s), author, agent_id, task_id, message, timestamp, tree_cid
-- [ ] 1.4.2 Implement commit creation
-- [ ] 1.4.3 Implement commit history walk (`log`)
-- [ ] 1.4.4 Implement `diff` between commits (node/edge added/removed/changed)
-- [ ] 1.4.5 Implement `revert` to a prior commit
-- [ ] 1.4.6 Implement signed commits (Ed25519) — optional, behind feature flag
+ - [x] 1.4.1 Define `Commit` struct: cid, parent(s), author, agent_id, task_id, message, timestamp, tree_cid
+ - [x] 1.4.2 Implement commit creation
+ - [x] 1.4.3 Implement commit history walk (`log`)
+ - [x] 1.4.4 Implement `diff` between commits (node/edge added/removed/changed)
+ - [x] 1.4.5 Implement `revert` to a prior commit
+ - [x] 1.4.6 Implement signed commits (Ed25519) — optional, behind feature flag
 
 ### 1.5 Branching & merging
-- [ ] 1.5.1 Implement branch refs (`refs/heads/*`)
-- [ ] 1.5.2 Implement `branch create|list|delete`
-- [ ] 1.5.3 Implement 3-way merge (graph + embedding merge)
-- [ ] 1.5.4 Implement merge conflict detection → `.mnem/MERGE_CONFLICTS.json`
-- [ ] 1.5.5 Implement `merge --strategy=ours|theirs`, `--dry-run`, `--continue`, `--abort`
-- [ ] 1.5.6 Implement `pull` (fast-forward remote branch)
-- [ ] 1.5.7 Merge tests (clean merge, conflict, abort)
+ - [x] 1.5.1 Implement branch refs (`refs/heads/*`)
+ - [x] 1.5.2 Implement `branch create|list|delete`
+ - [x] 1.5.3 Implement 3-way merge (graph + embedding merge)
+ - [x] 1.5.4 Implement merge conflict detection → `.mnem/MERGE_CONFLICTS.json`
+ - [x] 1.5.5 Implement `merge --strategy=ours|theirs`, `--dry-run`, `--continue`, `--abort`
+ - [x] 1.5.6 Implement `pull` (fast-forward remote branch)
+ - [x] 1.5.7 Merge tests (clean merge, conflict, abort)
 
 ### 1.6 Tombstone & supersession
-- [ ] 1.6.1 Implement `tombstone_node(id, reason)` — logical forget
-- [ ] 1.6.2 Filter tombstoned nodes from all retrieval paths
-- [ ] 1.6.3 Implement `revoked_by` edge for supersession (old → new)
-- [ ] 1.6.4 Implement `resolve(id)` — follow supersession chain to current truth
-- [ ] 1.6.5 Audit trail preserved (prior commits still addressable)
+ - [x] 1.6.1 Implement `tombstone_node(id, reason)` — logical forget
+ - [x] 1.6.2 Filter tombstoned nodes from all retrieval paths
+ - [x] 1.6.3 Implement `revoked_by` edge for supersession (old → new)
+ - [x] 1.6.4 Implement `resolve(id)` — follow supersession chain to current truth
+ - [x] 1.6.5 Audit trail preserved (prior commits still addressable)
 
 ### 1.7 Named stores
-- [ ] 1.7.1 Implement store create/set/list
-- [ ] 1.7.2 Implement `MNEMON_STORE`-style env var isolation (`OMNIMEM_STORE`)
-- [ ] 1.7.3 Per-store data directory layout
-- [ ] 1.7.4 Cross-store query (optional, read-only)
+ - [x] 1.7.1 Implement store create/set/list
+ - [x] 1.7.2 Implement `MNEMON_STORE`-style env var isolation (`OMNIMEM_STORE`)
+ - [x] 1.7.3 Per-store data directory layout
+ - [x] 1.7.4 Cross-store query (optional, read-only)
 
 ### 1.8 Branch-aware memories
-- [ ] 1.8.1 Tag memories with current git branch
-- [ ] 1.8.2 Filter recall by branch (default: current branch + main)
-- [ ] 1.8.3 `--all-branches` flag for cross-branch recall
+ - [x] 1.8.1 Tag memories with current git branch
+ - [x] 1.8.2 Filter recall by branch (default: current branch + main)
+ - [x] 1.8.3 `--all-branches` flag for cross-branch recall
 
 ### 1.9 Intent-native protocol
-- [ ] 1.9.1 Define MCP/CLI primitives: `remember`, `link`, `recall` (mnemon pattern)
-- [ ] 1.9.2 Implement `remember(content, label, props)` → commit node
-- [ ] 1.9.3 Implement `link(src, dst, predicate)` → commit edge
-- [ ] 1.9.4 Implement `recall(query, budget)` → ranked, budget-packed nodes
-- [ ] 1.9.5 Structured JSON output with signal transparency
+ - [x] 1.9.1 Define MCP/CLI primitives: `remember`, `link`, `recall` (mnemon pattern)
+ - [x] 1.9.2 Implement `remember(content, label, props)` → commit node
+ - [x] 1.9.3 Implement `link(src, dst, predicate)` → commit edge
+ - [x] 1.9.4 Implement `recall(query, budget)` → ranked, budget-packed nodes
+ - [x] 1.9.5 Structured JSON output with signal transparency
 
 **Phase 1 exit criteria:** commit DAG, branch/merge, tombstone, resolve, named stores all tested; `omnimem init` creates `.mnem/`.
 
