@@ -327,7 +327,7 @@
 
 ### 6.1 MCP server
 - [ ] 6.1.1 MCP stdio server (JSON-RPC 2.0)
-- [ ] 6.1.2 Tool profiles: micro (9), lite (21), team (29), full (48+)
+- [x] 6.1.2 Tool profiles: micro (9), lite (21), team (29), full (48+)
 - [ ] 6.1.3 Tool annotations (readOnlyHint, destructiveHint, idempotentHint, openWorldHint)
 - [ ] 6.1.4 MCP resources (`omnimem://node/{id}`, `.../session/{id}`, `.../graph/stats`)
 - [ ] 6.1.5 MCP prompts (`remember`, `reflect`, `correct`, `summarize`)
