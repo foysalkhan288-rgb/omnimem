@@ -288,9 +288,9 @@
 - [x] 5.2.4 Affected tests detection (via `CALLS` + test naming conventions)
 
 ### 5.3 Community detection
-- [ ] 5.3.1 Leiden/Louvain clustering on call graph
-- [ ] 5.3.2 Label communities (functional modules)
-- [ ] 5.3.3 Community membership on nodes
+- [x] 5.3.1 Leiden/Louvain clustering on call graph
+- [x] 5.3.2 Label communities (functional modules)
+- [x] 5.3.3 Community membership on nodes
 
 ### 5.4 Code quality scans
 - [x] 5.4.1 Dead code detection (no incoming edges, excluding entry points)
