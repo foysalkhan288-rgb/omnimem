@@ -272,6 +272,7 @@
 ## Phase 5 — Code Intelligence (Weeks 12–14)
 
 ### 5.1 Code graph
+ - [x] 5.0.1 Create omnimem-codeintel crate skeleton (Cargo.toml, lib.rs, error.rs, README.md) -- Phase 5 started
 - [ ] 5.1.1 Tree-sitter parsing for 14 languages (Python, JS/TS, C#, Go, Java, Rust, Ruby, PHP, C/C++, Kotlin, Swift, Scala)
 - [ ] 5.1.2 Create `File`, `Folder`, `Class`, `Method`, `Function`, `Interface` nodes
 - [ ] 5.1.3 `DEFINES` edges (file → symbol)
