@@ -72,6 +72,8 @@ omnimem-codeintel     = { path = "crates/omnimem-codeintel",     version = "0.1.
 omnimem-config           = { path = "crates/omnimem-config",           version = "0.1.0" }
 omnimem-embed-providers  = { path = "crates/omnimem-embed-providers",  version = "0.1.0" }
 omnimem-extract          = { path = "crates/omnimem-extract",          version = "0.1.0" }
+omnimem-hooks          = { path = "crates/omnimem-hooks",          version = "0.1.0" }
+
 omnimem-graphrag         = { path = "crates/omnimem-graphrag",         version = "0.1.0" }
 omnimem-http             = { path = "crates/omnimem-http",             version = "0.1.0" }
 omnimem-ingest           = { path = "crates/omnimem-ingest",           version = "0.1.0" }
