@@ -1,0 +1,18 @@
+# [storage]
+# path = "./data"
+
+# [embed]
+# provider = "local"
+# model = "default"
+
+# [ingest]
+# chunk_size = 512
+
+# [retrieval]
+# limit = 10
+
+# [lifecycle]
+# retention_days = 0
+
+# [viewer]
+# port = 8080

@@ -1,0 +1,12 @@
+[book]
+title = "OmniMem"
+description = "Documentation for OmniMem"
+authors = ["mnem"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "light"
