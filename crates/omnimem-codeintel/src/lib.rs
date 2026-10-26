@@ -4,27 +4,18 @@
 //! (files, folders, classes, methods, functions), scope-resolved CALLS edges,
 //! N-hop impact analysis, community detection, and audit passes (dead code,
 //! naming conventions, security scan).
-//!
-//! This crate is a skeleton in v1; full implementation lands in Phase 5.
 
-use thiserror::Error;
+pub mod audit;
+pub mod error;
+pub mod graph;
+pub mod parser;
 
-/// Errors produced by the code-intelligence subsystem.
-#[derive(Debug, Error)]
-pub enum CodeIntelError {
-    /// A source file could not be parsed.
-    #[error("parse error: {0}")]
-    Parse(String),
-    /// An I/O error occurred.
-    #[error("io error: {0}")]
-    Io(#[from] std::io::Error),
-    /// An underlying OmniMem core error.
-    #[error("core error: {0}")]
-    Core(String),
-}
+pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
+pub use error::{CodeIntelError, Result};
+pub use graph::CodeGraph;
+pub use parser::{Symbol, SymbolKind, language_for_path, parse_symbols};
 
-/// Result type for code-intelligence operations.
-pub type Result<T> = std::result::Result<T, CodeIntelError>;
+use std::path::Path;
 
 /// High-level entry point for building a code graph from a repository root.
 pub struct CodeGraphBuilder {
@@ -38,8 +29,36 @@ impl CodeGraphBuilder {
     }
 
     /// Return the repository root this builder targets.
-    pub fn root(&self) -> &std::path::Path {
+    pub fn root(&self) -> &Path {
         &self.root
+    }
+
+    /// Build the code graph.
+    pub fn build(&self) -> Result<CodeGraph> {
+        CodeGraph::build(&self.root)
+    }
+
+    /// Run impact analysis for `symbol_name`.
+    pub fn impact(&self, symbol_name: &str) -> Vec<std::path::PathBuf> {
+        let graph = match self.build() {
+            Ok(g) => g,
+            Err(_) => return Vec::new(),
+        };
+        graph.impact(symbol_name, &self.root)
+    }
+
+    /// Run dead-code audit.
+    pub fn dead_code(&self) -> Vec<DeadCodeFinding> {
+        let graph = match self.build() {
+            Ok(g) => g,
+            Err(_) => return Vec::new(),
+        };
+        audit::dead_code(&graph, &self.root)
+    }
+
+    /// Run security scan.
+    pub fn security_scan(&self) -> Vec<SecurityFinding> {
+        audit::security_scan(&self.root)
     }
 }
 
@@ -51,5 +70,15 @@ mod tests {
     fn builder_stores_root() {
         let b = CodeGraphBuilder::new("/tmp/repo");
         assert_eq!(b.root(), std::path::Path::new("/tmp/repo"));
+    }
+
+    #[test]
+    fn parse_rust_symbols() {
+        let src = "fn foo() {}\nstruct Bar {}\nimpl Bar { fn method(&self) {} }\n";
+        let path = std::path::Path::new("test.rs");
+        let syms = parse_symbols(path, src).unwrap();
+        let names: Vec<&str> = syms.iter().map(|s| s.name.as_str()).collect();
+        assert!(names.contains(&"foo"));
+        assert!(names.contains(&"Bar"));
     }
 }
