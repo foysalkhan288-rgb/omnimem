@@ -14,8 +14,8 @@
  - [x] 0.1.1 Create new Git repository `omnimem` (private → public later)
  - [x] 0.1.2 Initialize Rust workspace (`Cargo.toml` with members)
  - [x] 0.1.3 Fork mnem workspace into `crates/` (copy structure, rename crate prefixes `mnem-*` → `omnimem-*`)
-- [ ] 0.1.4 Verify `cargo build` succeeds on Linux/macOS/Windows
-- [ ] 0.1.5 Verify `cargo test --workspace` passes on clean fork
+- [x] 0.1.4 Verify `cargo build` succeeds on Linux/macOS/Windows
+- [x] 0.1.5 Verify `cargo test --workspace` passes on clean fork
  - [x] 0.1.6 Set up `.gitignore`, `.gitattributes`, `rust-toolchain.toml` (MSRV 1.95)
  - [x] 0.1.7 Add `LICENSE` (Apache-2.0) + `NOTICE`
  - [x] 0.1.8 Add `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`
@@ -117,53 +117,53 @@
 ## Phase 2 — Ingestion (Weeks 6–7)
 
 ### 2.1 File-type detection & routing
-- [ ] 2.1.1 Implement file-type detection by extension + content sniffing
-- [ ] 2.1.2 Route: `.md/.rst/.adoc` → heading chunker; code → AST chunker; `.pdf` → sliding window; other → paragraph
-- [ ] 2.1.3 Implement `--chunker` override (auto/paragraph/recursive/sentence/session/structural)
+- [x] 2.1.1 Implement file-type detection by extension + content sniffing
+- [x] 2.1.2 Route: `.md/.rst/.adoc` → heading chunker; code → AST chunker; `.pdf` → sliding window; other → paragraph
+- [x] 2.1.3 Implement `--chunker` override (auto/paragraph/recursive/sentence/session/structural)
 
 ### 2.2 Markdown heading chunker
-- [ ] 2.2.1 Split on headings (h1–h6), preserve hierarchy
-- [ ] 2.2.2 Extract frontmatter (title, tags, permalink)
-- [ ] 2.2.3 Create `Doc` + `Chunk` nodes with `CONTAINS` edges
+- [x] 2.2.1 Split on headings (h1–h6), preserve hierarchy
+- [x] 2.2.2 Extract frontmatter (title, tags, permalink)
+- [x] 2.2.3 Create `Doc` + `Chunk` nodes with `CONTAINS` edges
 
 ### 2.3 Code AST chunker (tree-sitter)
-- [ ] 2.3.1 Integrate tree-sitter (start: Rust, TypeScript/JS, Python, Go)
-- [ ] 2.3.2 Extract functions, classes, methods, structs, traits, interfaces
-- [ ] 2.3.3 Create `CodeSymbol` nodes with `DEFINES` edges (file → symbol)
-- [ ] 2.3.4 Extract call sites → `CALLS` edges (scope-resolved)
-- [ ] 2.3.5 Extract imports → `IMPORTS` edges
-- [ ] 2.3.6 Parse caching: skip unchanged files (hash-based)
-- [ ] 2.3.7 Add languages: Java, C/C++, C#, Kotlin, Swift, Scala, Ruby, PHP, Rust (full), Go (full)
+- [x] 2.3.1 Integrate tree-sitter (start: Rust, TypeScript/JS, Python, Go)
+- [x] 2.3.2 Extract functions, classes, methods, structs, traits, interfaces
+- [x] 2.3.3 Create `CodeSymbol` nodes with `DEFINES` edges (file → symbol)
+- [x] 2.3.4 Extract call sites → `CALLS` edges (scope-resolved)
+- [x] 2.3.5 Extract imports → `IMPORTS` edges
+- [x] 2.3.6 Parse caching: skip unchanged files (hash-based)
+- [x] 2.3.7 Add languages: Java, C/C++, C#, Kotlin, Swift, Scala, Ruby, PHP, Rust (full), Go (full)
 
 ### 2.4 PDF sliding-window chunker
-- [ ] 2.4.1 Extract text from PDF (text-layer only, no OCR in v1)
-- [ ] 2.4.2 Sliding window with configurable `max_tokens` + `overlap`
-- [ ] 2.4.3 Create `Chunk` nodes with page references
+- [x] 2.4.1 Extract text from PDF (text-layer only, no OCR in v1)
+- [x] 2.4.2 Sliding window with configurable `max_tokens` + `overlap`
+- [x] 2.4.3 Create `Chunk` nodes with page references
 
 ### 2.5 Deterministic hashing & dedup
-- [ ] 2.5.1 Content hash (BLAKE3) per chunk/node
-- [ ] 2.5.2 Skip ingest if content hash matches existing node (no-op)
-- [ ] 2.5.3 Cross-machine dedup verification test
+- [x] 2.5.1 Content hash (BLAKE3) per chunk/node
+- [x] 2.5.2 Skip ingest if content hash matches existing node (no-op)
+- [x] 2.5.3 Cross-machine dedup verification test
 
 ### 2.6 JSONL transcript import
-- [ ] 2.6.1 Parse Claude Code JSONL transcript format
-- [ ] 2.6.2 Convert messages → memory nodes (user/assistant/tool)
-- [ ] 2.6.3 Mark origin channel `import`; index for search
-- [ ] 2.6.4 Trigger crystal/lesson extraction (optional, LLM-supervised)
+- [x] 2.6.1 Parse Claude Code JSONL transcript format
+- [x] 2.6.2 Convert messages → memory nodes (user/assistant/tool)
+- [x] 2.6.3 Mark origin channel `import`; index for search
+- [x] 2.6.4 Trigger crystal/lesson extraction (optional, LLM-supervised)
 
 ### 2.7 Secret stripping & redaction
-- [ ] 2.7.1 Regex-based secret detection (tokens, keys, passwords, API keys)
-- [ ] 2.7.2 Replace detected secrets with `[redacted:<kind>]`
-- [ ] 2.7.3 Report redaction count in response
-- [ ] 2.7.4 Refuse credential identifiers (session/project/platform names containing secrets)
-- [ ] 2.7.5 Credential redaction before storage (marm-memory pattern)
+- [x] 2.7.1 Regex-based secret detection (tokens, keys, passwords, API keys)
+- [x] 2.7.2 Replace detected secrets with `[redacted:<kind>]`
+- [x] 2.7.3 Report redaction count in response
+- [x] 2.7.4 Refuse credential identifiers (session/project/platform names containing secrets)
+- [x] 2.7.5 Credential redaction before storage (marm-memory pattern)
 
 ### 2.8 Ingest CLI & MCP
-- [ ] 2.8.1 `omnimem ingest <path>` (file or directory, auto-detect)
-- [ ] 2.8.2 `omnimem ingest --text "..."` (inline)
-- [ ] 2.8.3 `omnimem ingest --url <url>` (deferred to v2, or basic)
-- [ ] 2.8.4 MCP tool `ingest` with `path`/`text`/`source` params
-- [ ] 2.8.5 Progress reporting + summary (nodes/chunks/entities/relations counts)
+- [x] 2.8.1 `omnimem ingest <path>` (file or directory, auto-detect)
+- [x] 2.8.2 `omnimem ingest --text "..."` (inline)
+- [x] 2.8.3 `omnimem ingest --url <url>` (deferred to v2, or basic)
+- [x] 2.8.4 MCP tool `ingest` with `path`/`text`/`source` params
+- [x] 2.8.5 Progress reporting + summary (nodes/chunks/entities/relations counts)
 
 **Phase 2 exit criteria:** ingest of a 500-file mixed repo produces identical graph on re-run; secrets stripped; JSONL import works.
 
@@ -172,55 +172,55 @@
 ## Phase 3 — Retrieval (Weeks 8–9)
 
 ### 3.1 Vector search (HNSW)
-- [ ] 3.1.1 Integrate HNSW index (instant-distance or custom)
-- [ ] 3.1.2 Embed nodes via ONNX MiniLM-L6-v2 (default)
-- [ ] 3.1.3 Pluggable embedder: Ollama, OpenAI, Cohere via config
-- [ ] 3.1.4 Cosine similarity search with model binding (skip mismatched models)
+- [x] 3.1.1 Integrate HNSW index (instant-distance or custom)
+- [x] 3.1.2 Embed nodes via ONNX MiniLM-L6-v2 (default)
+- [x] 3.1.3 Pluggable embedder: Ollama, OpenAI, Cohere via config
+- [x] 3.1.4 Cosine similarity search with model binding (skip mismatched models)
 
 ### 3.2 Sparse search (BM25/SPLADE)
-- [ ] 3.2.1 Implement BM25 over node summaries/content
-- [ ] 3.2.2 SPLADE sparse vector support (optional)
-- [ ] 3.2.3 Tokenizer: camelCase/snake_case aware (cbm_camel_split pattern)
+- [x] 3.2.1 Implement BM25 over node summaries/content
+- [x] 3.2.2 SPLADE sparse vector support (optional)
+- [x] 3.2.3 Tokenizer: camelCase/snake_case aware (cbm_camel_split pattern)
 
 ### 3.3 Graph traversal
-- [ ] 3.3.1 Multi-hop expansion (1–4 hops, configurable)
-- [ ] 3.3.2 Graph decay scoring (decay^depth)
-- [ ] 3.3.3 PPR (personalized PageRank) mode — optional
-- [ ] 3.3.4 Edge-type allowlist for traversal
-- [ ] 3.3.5 Per-seed outgoing-edge cap (prevent star-node starvation)
+- [x] 3.3.1 Multi-hop expansion (1–4 hops, configurable)
+- [x] 3.3.2 Graph decay scoring (decay^depth)
+- [x] 3.3.3 PPR (personalized PageRank) mode — optional
+- [x] 3.3.4 Edge-type allowlist for traversal
+- [x] 3.3.5 Per-seed outgoing-edge cap (prevent star-node starvation)
 
 ### 3.4 Fusion & ranking
-- [ ] 3.4.1 RRF fusion (vector + BM25 + graph)
-- [ ] 3.4.2 Convex min-max fusion (Bruch 2023) as alternative
-- [ ] 3.4.3 Intent-aware query routing (WHY/WHEN/GENERAL → adjust weights)
-- [ ] 3.4.4 Zero-LLM query expansion (entity extraction, case detection, path matching) — Mnemo pattern
+- [x] 3.4.1 RRF fusion (vector + BM25 + graph)
+- [x] 3.4.2 Convex min-max fusion (Bruch 2023) as alternative
+- [x] 3.4.3 Intent-aware query routing (WHY/WHEN/GENERAL → adjust weights)
+- [x] 3.4.4 Zero-LLM query expansion (entity extraction, case detection, path matching) — Mnemo pattern
 
 ### 3.5 Token budget packing
-- [ ] 3.5.1 Greedy pack under token budget
-- [ ] 3.5.2 Report `tokens_used`, `candidates_seen`, `dropped`
-- [ ] 3.5.3 No silent truncation
+- [x] 3.5.1 Greedy pack under token budget
+- [x] 3.5.2 Report `tokens_used`, `candidates_seen`, `dropped`
+- [x] 3.5.3 No silent truncation
 
 ### 3.6 Grounded abstain
-- [ ] 3.6.1 Confidence threshold; return "insufficient evidence" when below
-- [ ] 3.6.2 Cite supporting nodes in response (provenance)
-- [ ] 3.6.3 Abstain tests (weak-evidence queries return abstain)
+- [x] 3.6.1 Confidence threshold; return "insufficient evidence" when below
+- [x] 3.6.2 Cite supporting nodes in response (provenance)
+- [x] 3.6.3 Abstain tests (weak-evidence queries return abstain)
 
 ### 3.7 Structural search
-- [ ] 3.7.1 `search_graph` with label, name_pattern, qn_pattern, file_pattern, min/max degree, where
-- [ ] 3.7.2 `search_code` (graph-augmented grep over indexed files only)
-- [ ] 3.7.3 Cypher-like query support (`MATCH ... RETURN ...`)
+- [x] 3.7.1 `search_graph` with label, name_pattern, qn_pattern, file_pattern, min/max degree, where
+- [x] 3.7.2 `search_code` (graph-augmented grep over indexed files only)
+- [x] 3.7.3 Cypher-like query support (`MATCH ... RETURN ...`)
 
 ### 3.8 Bi-temporal recall
-- [ ] 3.8.1 `as_of(timestamp)` query parameter
-- [ ] 3.8.2 Filter facts by valid_from/valid_to
-- [ ] 3.8.3 Timeline view (closed_only superseded versions)
+- [x] 3.8.1 `as_of(timestamp)` query parameter
+- [x] 3.8.2 Filter facts by valid_from/valid_to
+- [x] 3.8.3 Timeline view (closed_only superseded versions)
 
 ### 3.9 MCP/CLI retrieval tools
-- [ ] 3.9.1 `retrieve` (hybrid, budget-packed)
-- [ ] 3.9.2 `search` (structural/semantic)
-- [ ] 3.9.3 `get_node`, `traverse`, `incoming_edges`
-- [ ] 3.9.4 `schema` (labels + edge types)
-- [ ] 3.9.5 `stats` (repo overview)
+- [x] 3.9.1 `retrieve` (hybrid, budget-packed)
+- [x] 3.9.2 `search` (structural/semantic)
+- [x] 3.9.3 `get_node`, `traverse`, `incoming_edges`
+- [x] 3.9.4 `schema` (labels + edge types)
+- [x] 3.9.5 `stats` (repo overview)
 
 **Phase 3 exit criteria:** hybrid retrieval returns grounded results; token budget reported; bi-temporal `as_of` works; abstain on weak evidence.
 
@@ -229,41 +229,41 @@
 ## Phase 4 — Lifecycle (Weeks 10–11)
 
 ### 4.1 Decay & scoring
-- [ ] 4.1.1 Importance decay: `exp(-0.01 * days_old)` (Mnemo)
-- [ ] 4.1.2 Access-count boosting (reinforcement, capped 0.3)
-- [ ] 4.1.3 6-term recall score: retention, semantic, lexical, graph, importance, recency (engraphis)
-- [ ] 4.1.4 Retention tiers: hot (≥0.5), warm (≥0.25), cold (<0.25), evicted (<0.1 + age>60d)
-- [ ] 4.1.5 Pinned categories never evicted (architecture, decision, preference)
+- [x] 4.1.1 Importance decay: `exp(-0.01 * days_old)` (Mnemo)
+- [x] 4.1.2 Access-count boosting (reinforcement, capped 0.3)
+- [x] 4.1.3 6-term recall score: retention, semantic, lexical, graph, importance, recency (engraphis)
+- [x] 4.1.4 Retention tiers: hot (≥0.5), warm (≥0.25), cold (<0.25), evicted (<0.1 + age>60d)
+- [x] 4.1.5 Pinned categories never evicted (architecture, decision, preference)
 
 ### 4.2 Consolidation (4-tier)
-- [ ] 4.2.1 Tier 1: exact dedup (content hash)
-- [ ] 4.2.2 Tier 2: near-dedup (MinHash/LSH similarity)
-- [ ] 4.2.3 Tier 3: conflict detection (contradiction threshold 0.6)
-- [ ] 4.2.4 Tier 4: auto-forget (decay below threshold + age)
-- [ ] 4.2.5 Consolidation report (what merged/forgotten)
+- [x] 4.2.1 Tier 1: exact dedup (content hash)
+- [x] 4.2.2 Tier 2: near-dedup (MinHash/LSH similarity)
+- [x] 4.2.3 Tier 3: conflict detection (contradiction threshold 0.6)
+- [x] 4.2.4 Tier 4: auto-forget (decay below threshold + age)
+- [x] 4.2.5 Consolidation report (what merged/forgotten)
 
 ### 4.3 Importance & GC
-- [ ] 4.3.1 Importance score per node (access frequency × recency × salience)
-- [ ] 4.3.2 Garbage collection pass (remove evicted nodes from active tree)
-- [ ] 4.3.3 GC respects tombstones (never hard-delete without explicit flag)
-- [ ] 4.3.4 `omnimem gc` CLI command
+- [x] 4.3.1 Importance score per node (access frequency × recency × salience)
+- [x] 4.3.2 Garbage collection pass (remove evicted nodes from active tree)
+- [x] 4.3.3 GC respects tombstones (never hard-delete without explicit flag)
+- [x] 4.3.4 `omnimem gc` CLI command
 
 ### 4.4 Conflict detection
-- [ ] 4.4.1 Detect contradicting facts (similarity ≥0.6 + opposing polarity)
-- [ ] 4.4.2 Auto-supersede: new fact links `revoked_by` to old
-- [ ] 4.4.3 Surface conflicts in viewer / CLI
-- [ ] 4.4.4 `omnimem conflicts` command
+- [x] 4.4.1 Detect contradicting facts (similarity ≥0.6 + opposing polarity)
+- [x] 4.4.2 Auto-supersede: new fact links `revoked_by` to old
+- [x] 4.4.3 Surface conflicts in viewer / CLI
+- [x] 4.4.4 `omnimem conflicts` command
 
 ### 4.5 Privacy receipts
-- [ ] 4.5.1 Hashed operation receipts (SHA-256 chain)
-- [ ] 4.5.2 Export receipts without raw memory contents/queries
-- [ ] 4.5.3 `omnimem receipts export` command
+- [x] 4.5.1 Hashed operation receipts (SHA-256 chain)
+- [x] 4.5.2 Export receipts without raw memory contents/queries
+- [x] 4.5.3 `omnimem receipts export` command
 
 ### 4.6 Distill
-- [ ] 4.6.1 Transcript → proposals (sentence-level verbatim by default)
-- [ ] 4.6.2 Resolve each proposal vs store (new/duplicate/near)
-- [ ] 4.6.3 Guardrails review mode (auto-apply only if all deterministic checks pass)
-- [ ] 4.6.4 `distill propose|review|apply|discard` MCP/CLI
+- [x] 4.6.1 Transcript → proposals (sentence-level verbatim by default)
+- [x] 4.6.2 Resolve each proposal vs store (new/duplicate/near)
+- [x] 4.6.3 Guardrails review mode (auto-apply only if all deterministic checks pass)
+- [x] 4.6.4 `distill propose|review|apply|discard` MCP/CLI
 
 **Phase 4 exit criteria:** decay/GC runs without data loss; conflicts detected and superseded; receipts exportable; distill produces reviewable proposals.
 
