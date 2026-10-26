@@ -18,10 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Rust toolchain 1.95.0
+      - name: Install Rust toolchain 1.96.0
         uses: dtolnay/rust-toolchain@stable
         with:
-          toolchain: 1.95.0
+          toolchain: 1.96.0
           components: clippy, rustfmt
 
       - name: Cache cargo

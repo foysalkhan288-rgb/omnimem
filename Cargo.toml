@@ -2,9 +2,9 @@
 members = ["crates/*"]
 resolver = "2"
 
-[package]
-name = "omnimem"
+[workspace.package]
 version = "0.1.0"
 edition = "2021"
 license = "Apache-2.0"
-description = "A unified memory system for AI agents."
+authors = ["OmniMem Contributors"]
+repository = "https://github.com/foysalkhan288-rgb/omnimem"
