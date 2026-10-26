@@ -273,19 +273,19 @@
 
 ### 5.1 Code graph
  - [x] 5.0.1 Create omnimem-codeintel crate skeleton (Cargo.toml, lib.rs, error.rs, README.md) -- Phase 5 started
-- [ ] 5.1.1 Tree-sitter parsing for 14 languages (Python, JS/TS, C#, Go, Java, Rust, Ruby, PHP, C/C++, Kotlin, Swift, Scala)
-- [ ] 5.1.2 Create `File`, `Folder`, `Class`, `Method`, `Function`, `Interface` nodes
-- [ ] 5.1.3 `DEFINES` edges (file → symbol)
-- [ ] 5.1.4 `CALLS` edges (scope-resolved, confidence scored)
-- [ ] 5.1.5 `IMPORTS` edges
-- [ ] 5.1.6 `IMPLEMENTS`, `INHERITS` edges
-- [ ] 5.1.7 `SIMILAR_TO` (MinHash + LSH near-clone detection)
+- [x] 5.1.1 Tree-sitter parsing for 14 languages (Python, JS/TS, C#, Go, Java, Rust, Ruby, PHP, C/C++, Kotlin, Swift, Scala)
+- [x] 5.1.2 Create `File`, `Folder`, `Class`, `Method`, `Function`, `Interface` nodes
+- [x] 5.1.3 `DEFINES` edges (file → symbol)
+- [x] 5.1.4 `CALLS` edges (scope-resolved, confidence scored)
+- [x] 5.1.5 `IMPORTS` edges
+- [x] 5.1.6 `IMPLEMENTS`, `INHERITS` edges
+- [x] 5.1.7 `SIMILAR_TO` (MinHash + LSH near-clone detection)
 
 ### 5.2 Impact analysis
-- [ ] 5.2.1 N-hop BFS blast radius (upstream + downstream)
-- [ ] 5.2.2 Risk classification (CRITICAL/HIGH/MEDIUM/LOW by hop distance)
-- [ ] 5.2.3 `impact(symbol)` MCP/CLI tool
-- [ ] 5.2.4 Affected tests detection (via `CALLS` + test naming conventions)
+- [x] 5.2.1 N-hop BFS blast radius (upstream + downstream)
+- [x] 5.2.2 Risk classification (CRITICAL/HIGH/MEDIUM/LOW by hop distance)
+- [x] 5.2.3 `impact(symbol)` MCP/CLI tool
+- [x] 5.2.4 Affected tests detection (via `CALLS` + test naming conventions)
 
 ### 5.3 Community detection
 - [ ] 5.3.1 Leiden/Louvain clustering on call graph
@@ -293,10 +293,10 @@
 - [ ] 5.3.3 Community membership on nodes
 
 ### 5.4 Code quality scans
-- [ ] 5.4.1 Dead code detection (no incoming edges, excluding entry points)
-- [ ] 5.4.2 Convention checking (naming per language)
-- [ ] 5.4.3 Security scan (hardcoded secrets, SQL injection, eval, shell injection)
-- [ ] 5.4.4 `audit` MCP/CLI tool
+- [x] 5.4.1 Dead code detection (no incoming edges, excluding entry points)
+- [x] 5.4.2 Convention checking (naming per language)
+- [x] 5.4.3 Security scan (hardcoded secrets, SQL injection, eval, shell injection)
+- [x] 5.4.4 `audit` MCP/CLI tool
 
 ### 5.5 Code↔memory links
 - [ ] 5.5.1 Link memory nodes to code symbols (file path, symbol name)
