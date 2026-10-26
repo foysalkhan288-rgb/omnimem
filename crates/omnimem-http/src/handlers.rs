@@ -7853,3 +7853,36 @@ mod ref_name_validation_tests {
         assert!(!is_valid_ref_name("refs/heads/my branch"));
     }
 }
+
+/// `GET /viewer` - minimal real-time memory viewer (HTML).
+pub(crate) async fn viewer() -> axum::response::Html<&'static str> {
+    axum::response::Html(VIEWER_HTML)
+}
+
+const VIEWER_HTML: &str = r#"<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OmniMem Viewer</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2rem; color: #222; }
+h1 { color: #4a148c; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+a { color: #4a148c; }
+</style>
+</head>
+<body>
+<h1>OmniMem Viewer</h1>
+<p>Local-first agent memory. Use the <a href="/v1/stats">/v1/stats</a> endpoint for live counts.</p>
+<div class="card">
+  <h2>Quick links</h2>
+  <ul>
+    <li><a href="/v1/healthz">Health</a></li>
+    <li><a href="/v1/stats">Stats</a></li>
+    <li><a href="/v1/log">Op log</a></li>
+    <li><a href="/v1/tags">Tags</a></li>
+  </ul>
+</div>
+<p style="color:#888;font-size:.85rem;">OmniMem HTTP viewer (v1 skeleton). Session replay coming in Phase 6.</p>
+</body>
+</html>"#;
