@@ -11,6 +11,7 @@ pub mod error;
 pub mod graph;
 pub mod parser;
 pub mod watcher;
+pub mod workspace;
 
 pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
 pub use community::{CommunityMap, detect_communities};
@@ -18,6 +19,7 @@ pub use error::{CodeIntelError, Result};
 pub use graph::CodeGraph;
 pub use parser::{Symbol, SymbolKind, language_for_path, parse_symbols};
 pub use watcher::Watcher;
+pub use workspace::Workspace;
 
 use std::path::Path;
 
