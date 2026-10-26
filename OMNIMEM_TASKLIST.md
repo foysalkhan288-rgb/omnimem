@@ -309,9 +309,9 @@
 - [ ] 5.6.3 Service-level lookup (one call → full architecture)
 
 ### 5.7 Auto-sync watcher
-- [ ] 5.7.1 File watcher (notify crate) per registered project
-- [ ] 5.7.2 Per-session ownership (watch removed when last owner disconnects)
-- [ ] 5.7.3 Re-index on change (incremental, hash-based skip)
+- [x] 5.7.1 File watcher (notify crate) per registered project
+- [x] 5.7.2 Per-session ownership (watch removed when last owner disconnects)
+- [x] 5.7.3 Re-index on change (incremental, hash-based skip)
 - [ ] 5.7.4 `auto_watch` global toggle
 
 ### 5.8 Cross-repo (basic)
@@ -372,10 +372,10 @@
 - [ ] 6.5.7 `omnimem capture` / `capture --drain`
 
 ### 6.6 Markdown harness
-- [ ] 6.6.1 `SKILL.md` template (commands, judgment)
-- [ ] 6.6.2 `GUIDELINE.md` (when to remember/recall)
-- [ ] 6.6.3 4 lifecycle phases: Prime, Remind, Nudge, Compact
-- [ ] 6.6.4 `omnimem setup --target <agent>` deploys harness
+- [x] 6.6.1 `SKILL.md` template (commands, judgment)
+- [x] 6.6.2 `GUIDELINE.md` (when to remember/recall)
+- [x] 6.6.3 4 lifecycle phases: Prime, Remind, Nudge, Compact
+- [x] 6.6.4 `omnimem setup --target <agent>` deploys harness
 
 ### 6.7 Cross-agent shared memory
 - [ ] 6.7.1 Shared store across agents (one server, many clients)
