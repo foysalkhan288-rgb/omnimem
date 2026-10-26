@@ -9,11 +9,13 @@ pub mod audit;
 pub mod error;
 pub mod graph;
 pub mod parser;
+pub mod watcher;
 
 pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
 pub use error::{CodeIntelError, Result};
 pub use graph::CodeGraph;
 pub use parser::{Symbol, SymbolKind, language_for_path, parse_symbols};
+pub use watcher::Watcher;
 
 use std::path::Path;
 
