@@ -315,9 +315,9 @@
 - [ ] 5.7.4 `auto_watch` global toggle
 
 ### 5.8 Cross-repo (basic)
-- [ ] 5.8.1 Multi-repo workspace linking (`omnimem link <path>`)
-- [ ] 5.8.2 Cross-repo search (code + memory + knowledge)
-- [ ] 5.8.3 Cross-impact analysis (what breaks in other services)
+- [x] 5.8.1 Multi-repo workspace linking (`omnimem link <path>`)
+- [x] 5.8.2 Cross-repo search (code + memory + knowledge)
+- [x] 5.8.3 Cross-impact analysis (what breaks in other services)
 
 **Phase 5 exit criteria:** code graph built on 5+ languages; impact analysis returns blast radius; dead code + security scan run; auto-sync re-indexes on change.
 
