@@ -1,10 +1,81 @@
 [workspace]
 members = ["crates/*"]
-resolver = "2"
+resolver = "3"
 
 [workspace.package]
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
+rust-version = "1.95"
 license = "Apache-2.0"
 authors = ["OmniMem Contributors"]
 repository = "https://github.com/foysalkhan288-rgb/omnimem"
+homepage = "https://github.com/foysalkhan288-rgb/omnimem"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+rust_2018_idioms = { level = "warn", priority = -1 }
+missing_docs = "deny"
+unreachable_pub = "warn"
+unknown_lints = "allow"
+
+[workspace.lints.rustdoc]
+doc_lazy_continuation = "allow"
+private_intra_doc_links = "allow"
+bare_urls = "allow"
+invalid_html_tags = "allow"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+
+[workspace.dependencies]
+# --- IPLD / multiformats ---
+cid                  = { version = "0.11", default-features = false, features = ["alloc", "serde"] }
+multihash            = { version = "0.19", default-features = false, features = ["alloc", "serde"] }
+multihash-codetable  = { version = "0.2",  default-features = false, features = ["sha2", "blake3"] }
+ipld-core            = { version = "0.4",  default-features = false, features = ["serde"] }
+serde_ipld_dagcbor   = { version = "0.6",  default-features = false, features = ["std"] }
+serde_ipld_dagjson   = { version = "0.2",  default-features = false }
+
+# --- identity / crypto ---
+uuid                 = { version = "1.23", default-features = false, features = ["v7", "serde", "std"] }
+ed25519-dalek        = { version = "2.2",  default-features = false, features = ["rand_core", "zeroize"] }
+blake3               = { version = "1.8",  default-features = false }
+sha2                 = { version = "0.11", default-features = false }
+
+# --- serde / errors / buffers ---
+serde                = { version = "1",    default-features = false, features = ["derive", "alloc"] }
+thiserror            = { version = "2.0",  default-features = false }
+bytes                = { version = "1.11", default-features = false, features = ["serde"] }
+
+# --- concurrency ---
+arc-swap             = "1.9"
+
+# --- observability ---
+tracing              = { version = "0.1", default-features = false, features = ["std", "attributes"] }
+
+# --- storage backend ---
+redb                 = "4.1"
+
+# --- dev-dependencies ---
+proptest             = "1.11"
+criterion            = { version = "0.8", default-features = false, features = ["html_reports"] }
+
+# --- internal workspace crates ---
+omnimem-ann              = { path = "crates/omnimem-ann",              version = "0.1.0", default-features = false }
+omnimem-backend-redb     = { path = "crates/omnimem-backend-redb",     version = "0.1.0" }
+omnimem-bench            = { path = "crates/omnimem-bench",            version = "0.1.0", default-features = false }
+omnimem-core             = { path = "crates/omnimem-core",             version = "0.1.0" }
+omnimem-core-testutils   = { path = "crates/omnimem-core-testutils" }
+omnimem-config           = { path = "crates/omnimem-config",           version = "0.1.0" }
+omnimem-embed-providers  = { path = "crates/omnimem-embed-providers",  version = "0.1.0" }
+omnimem-extract          = { path = "crates/omnimem-extract",          version = "0.1.0" }
+omnimem-graphrag         = { path = "crates/omnimem-graphrag",         version = "0.1.0" }
+omnimem-http             = { path = "crates/omnimem-http",             version = "0.1.0" }
+omnimem-ingest           = { path = "crates/omnimem-ingest",           version = "0.1.0" }
+omnimem-llm-providers    = { path = "crates/omnimem-llm-providers",    version = "0.1.0" }
+omnimem-mcp              = { path = "crates/omnimem-mcp",              version = "0.1.0", default-features = false }
+omnimem-ner-providers    = { path = "crates/omnimem-ner-providers",    version = "0.1.0" }
+omnimem-rerank-providers = { path = "crates/omnimem-rerank-providers", version = "0.1.0" }
+omnimem-sparse-providers = { path = "crates/omnimem-sparse-providers", version = "0.1.0" }
+omnimem-transport        = { path = "crates/omnimem-transport",        version = "0.1.0" }

@@ -1,0 +1,76 @@
+[package]
+name = "omnimem-mcp"
+description = "Model Context Protocol server for omnimem - the AI-native, local-first memory substrate for agents."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+categories = ["command-line-utilities", "database"]
+keywords = ["mcp", "ai-agent", "memory", "knowledge-graph", "rag"]
+readme = "README.md"
+documentation = "https://docs.rs/omnimem-mcp"
+
+[[bin]]
+name = "omnimem-mcp"
+path = "src/main.rs"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[lints]
+workspace = true
+
+# `summarize` gates the `omnimem_community_summarize` tool. C3 FIX-5
+# originally kept it OFF to reclaim ~2.3 MiB from the default binary;
+# flips the default to ON because the tool is
+# advertised in source / docs and shipping a binary that omits it
+# silently broke the "16 tools" claim. Operators who need the lean
+# binary build with `--no-default-features`.
+#
+# Bundled-embedder default: `bundled-embedder` activates the
+# in-process MiniLM-L6-v2 dense embedder (forwarded to
+# omnimem-embed-providers/onnx-bundled). When ON, `omnimem_retrieve` with
+# `text` and no `vector` auto-embeds the text in-process, no
+# `omnimem_EMBED_*` env vars, no `[embed]` section, no Ollama daemon.
+# When OFF, the existing behaviour is preserved (text passed to the
+# retriever only as rerank input). Implies `summarize` so the
+# embed-providers crate is in the dep tree.
+[features]
+default = ["summarize", "bundled-embedder"]
+summarize = ["dep:omnimem-embed-providers", "dep:omnimem-graphrag"]
+onnx = ["summarize", "omnimem-embed-providers/onnx"]
+bundled-embedder = ["summarize", "omnimem-embed-providers/onnx-bundled"]
+bundled-embedder-cuda = ["bundled-embedder", "omnimem-embed-providers/onnx-bundled-cuda"]
+bundled-embedder-directml = ["bundled-embedder", "omnimem-embed-providers/onnx-bundled-directml"]
+
+[dependencies]
+omnimem-core = { workspace = true }
+omnimem-backend-redb = { workspace = true }
+# Phase-B5d: wires the `omnimem_ingest` MCP tool. Brings in parse +
+# chunk + rule-based-NER; LLM-driven variants stay behind the
+# omnimem-ingest `ollama` feature (not forwarded here).
+omnimem-ingest = { workspace = true }
+# E4 T2: Centroid+MMR extractive summarizer wired in as the
+# `omnimem_community_summarize` tool. Gated behind the `summarize`
+# feature (C3 FIX-5) so the default binary stays free of the
+# embed-providers tree.
+omnimem-graphrag = { workspace = true, optional = true }
+# Used only by `omnimem_community_summarize` to open an embedder from
+# env vars or from `<repo>/config.toml`. Gated behind `summarize`.
+omnimem-embed-providers = { workspace = true, optional = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = "1"
+# Used for reading ~/.omnimemglobal/repos.toml (global registry) and by
+# `omnimem_community_summarize` for per-repo config.toml parsing.
+toml = "1"
+anyhow = "1"
+dirs = "6"
+ipld-core = { workspace = true }
+bytes = { workspace = true }
+
+[dev-dependencies]
+tempfile = "3"
