@@ -248,32 +248,20 @@ mod tests {
     #[test]
     fn empty_bucket_refills_after_elapsed_time() {
         // Drain a small bucket.
-        let limiter = RemoteRateLimiter::new(1_000_000, 3);
+        let limiter = RemoteRateLimiter::new(1, 3);
         assert!(limiter.try_consume());
         assert!(limiter.try_consume());
         assert!(limiter.try_consume());
         assert!(!limiter.try_consume()); // empty
 
-        // Simulate elapsed time by backdating last_refill_ns to 2
-        // seconds ago so the next try_consume sees 2_000_000_000 ns of
-        // elapsed time and accrues 2_000_000 * 1 milli-tokens >> 3_000
-        // needed for one token.
-        let two_seconds_ago_ns = limiter
-            .inner
-            .epoch
-            .elapsed()
-            .as_nanos()
-            .min(u64::MAX as u128) as u64;
-        let backdated = two_seconds_ago_ns.saturating_sub(2_000_000_000);
-        limiter
-            .inner
-            .last_refill_ns
-            .store(backdated, Ordering::Relaxed);
+        // Simulate elapsed time by sleeping slightly over 1 second so
+        // one token accrues at per_sec = 1.
+        std::thread::sleep(std::time::Duration::from_millis(1100));
 
         // Now a token should be available.
         assert!(
             limiter.try_consume(),
-            "bucket should have refilled after simulated 2 s elapsed"
+            "bucket should have refilled after ~1 s elapsed"
         );
     }
 

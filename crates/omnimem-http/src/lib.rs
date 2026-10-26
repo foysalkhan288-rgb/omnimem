@@ -273,6 +273,8 @@ pub fn app_with_options(repo_dir: &Path, opts: AppOptions) -> Result<Router> {
         graph_cache: Arc::new(Mutex::new(state::GraphCache::default())),
         traverse_cfg: Arc::new(routes::traverse::TraverseAnswerCfg::default()),
         ner_cfg,
+        data_dir: std::env::current_dir().unwrap_or_default(),
+        llm_cfg: None,
     };
 
     // Permissive CORS for v1: the server binds to loopback by default

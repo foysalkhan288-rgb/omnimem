@@ -323,7 +323,7 @@ impl HnswVectorIndex {
     /// Persist this index to `path` in a compact binary format.
     ///
     /// The format is:
-    /// - 8 bytes magic `b"omnimemHNSW"`
+        /// - 11 bytes magic `b"omnimemHNSW"`
     /// - 4 bytes version = 1 (LE u32)
     /// - 4 bytes op_id length (LE u32), then op_id bytes
     /// - 4 bytes model length (LE u32), then model UTF-8 bytes
@@ -442,7 +442,7 @@ impl HnswVectorIndex {
         let mut r = BufReader::new(file);
 
         // magic
-        let mut magic = [0u8; 8];
+        let mut magic = [0u8; 11];
         r.read_exact(&mut magic)
             .map_err(|e| Error::from(StoreError::Io(e.to_string())))?;
         if &magic != b"omnimemHNSW" {

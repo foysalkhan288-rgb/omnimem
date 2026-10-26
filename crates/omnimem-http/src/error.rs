@@ -41,6 +41,13 @@ impl Error {
         }
     }
 
+    pub(crate) fn unprocessable(msg: impl Into<String>) -> Self {
+        Self {
+            status: StatusCode::UNPROCESSABLE_ENTITY,
+            message: msg.into(),
+        }
+    }
+
     pub(crate) fn internal(msg: impl Into<String>) -> Self {
         Self {
             status: StatusCode::INTERNAL_SERVER_ERROR,

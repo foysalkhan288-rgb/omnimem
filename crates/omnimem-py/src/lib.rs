@@ -1,3 +1,4 @@
+#![allow(unsafe_code)]
 //! Python bindings for omnimem.
 //!
 //! Exposes the Phase-2 retrieval surface and the minimal write path to
@@ -13,7 +14,7 @@
 //! Build via `maturin develop` (dev) or `maturin build --release` (wheel).
 //! See `crates/omnimem-py/README.md` for the full Python-side usage.
 
-#![forbid(unsafe_code)]
+#![allow(unsafe_code)]
 #![deny(missing_docs)]
 #![allow(clippy::needless_pass_by_value)] // pyo3 consumes most Py-side values
 

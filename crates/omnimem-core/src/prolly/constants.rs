@@ -129,7 +129,7 @@ pub const ROLLING_WINDOW_BYTES: usize = 64;
 /// The 32-byte BLAKE3 keyed-hash key used by the rolling hash.
 ///
 /// Fixed for `omnimem/0.1`. MUST NOT be changed within this format version.
-/// Bytes are the ASCII literal `"omnimem-prolly-rh-1"` (16 bytes) followed
+/// Bytes are the ASCII literal `"mnem-prolly-rh-1"` (16 bytes) followed
 /// by 16 zero bytes (padding to BLAKE3's 32-byte key size).
 ///
 /// See SPEC §5.2.
@@ -173,7 +173,7 @@ mod tests {
 
     #[test]
     fn rolling_key_is_ascii_prefix_plus_zeros() {
-        assert_eq!(&ROLLING_KEY[..16], b"omnimem-prolly-rh-1");
+        assert_eq!(&ROLLING_KEY[..16], b"mnem-prolly-rh-1");
         assert!(ROLLING_KEY[16..].iter().all(|&b| b == 0));
     }
 

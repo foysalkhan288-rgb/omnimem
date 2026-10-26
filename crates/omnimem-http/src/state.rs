@@ -287,6 +287,13 @@ pub struct AppState {
     /// NER provider config resolved from the repo's `config.toml` at
     /// startup. When `None`, ingest paths default to `NerConfig::Rule`.
     pub ner_cfg: Option<omnimem_ingest::NerConfig>,
+    /// Directory used by the `/v1/config` handlers to read/write
+    /// `config.toml`. Defaults to the process working directory.
+    pub data_dir: std::path::PathBuf,
+    /// Optional LLM-provider config resolved from the repo's
+    /// `config.toml` at startup. When `None`, LLM-dependent
+    /// features (multi-query retrieval, etc.) are disabled.
+    pub llm_cfg: Option<omnimem_llm_providers::ProviderConfig>,
 }
 
 impl AppState {
@@ -937,6 +944,8 @@ pub(crate) mod test_support {
             graph_cache: Arc::new(Mutex::new(GraphCache::default())),
             traverse_cfg: Arc::new(crate::routes::traverse::TraverseAnswerCfg::default()),
             ner_cfg: None,
+            data_dir: std::env::current_dir().unwrap_or_default(),
+            llm_cfg: None,
         }
     }
 }

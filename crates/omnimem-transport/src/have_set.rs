@@ -374,7 +374,7 @@ mod tests {
     #[test]
     fn seed_key_is_frozen_and_ascii_prefix() {
         // Pin: anyone changing this is bumping the wire protocol.
-        assert_eq!(&BLOOM_SEED_KEY[..21], b"omnimem-have-set-bloom-1");
-        assert!(BLOOM_SEED_KEY[21..].iter().all(|b| *b == 0));
+    assert_eq!(&BLOOM_SEED_KEY[..24], b"omnimem-have-set-bloom-1");
+    assert!(BLOOM_SEED_KEY[24..].iter().all(|b| *b == 0));
     }
 }
