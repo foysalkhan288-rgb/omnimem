@@ -407,10 +407,10 @@
 - [ ] 7.2.8 Fuzz tests (ingest, retrieval, merge)
 
 ### 7.3 Documentation
-- [ ] 7.3.1 User guide (quickstart, concepts, config)
+- [x] 7.3.1 User guide (quickstart, concepts, config)
 - [ ] 7.3.2 MCP tool reference (all tools, params, examples)
 - [ ] 7.3.3 CLI reference
-- [ ] 7.3.4 Architecture doc
+- [x] 7.3.4 Architecture doc
 - [ ] 7.3.5 Benchmark methodology + reproduction
 - [ ] 7.3.6 Migration guide (from mnem, memorix, etc.)
 - [ ] 7.3.7 AGENTS.md / CLAUDE.md integration snippets
