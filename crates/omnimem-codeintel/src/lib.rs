@@ -6,12 +6,14 @@
 //! naming conventions, security scan).
 
 pub mod audit;
+pub mod community;
 pub mod error;
 pub mod graph;
 pub mod parser;
 pub mod watcher;
 
 pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
+pub use community::{CommunityMap, detect_communities};
 pub use error::{CodeIntelError, Result};
 pub use graph::CodeGraph;
 pub use parser::{Symbol, SymbolKind, language_for_path, parse_symbols};
@@ -61,6 +63,15 @@ impl CodeGraphBuilder {
     /// Run security scan.
     pub fn security_scan(&self) -> Vec<SecurityFinding> {
         audit::security_scan(&self.root)
+    }
+
+    /// Detect communities in the code graph.
+    pub fn communities(&self) -> CommunityMap {
+        let graph = match self.build() {
+            Ok(g) => g,
+            Err(_) => return CommunityMap::new(),
+        };
+        community::detect_communities(&graph)
     }
 }
 
