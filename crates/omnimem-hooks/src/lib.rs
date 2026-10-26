@@ -69,7 +69,71 @@ impl HookConfig {
         }
     }
 
-    /// Generate a generic snippet for any agent (prints instructions).
+    /// Generate a Codex hooks snippet.
+    pub fn codex() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "session_start": [{"command": "omnimem capture --session-start"}],
+                "user_prompt": [{"command": "omnimem capture --prompt"}],
+                "post_tool_use": [{"command": "omnimem capture --tool-use"}],
+                "session_end": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self {
+            agent: "codex".to_string(),
+            json,
+        }
+    }
+
+    /// Generate a Cursor hooks snippet.
+    pub fn cursor() -> Self {
+        let json = serde_json::json!({
+            "version": 1,
+            "hooks": {
+                "beforeSubmitPrompt": [{"command": "omnimem capture --prompt"}],
+                "afterFileEdit": [{"command": "omnimem capture --tool-use"}],
+                "stop": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self {
+            agent: "cursor".to_string(),
+            json,
+        }
+    }
+
+    /// Generate a Gemini CLI hooks snippet.
+    pub fn gemini_cli() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "SessionStart": [{"command": "omnimem capture --session-start"}],
+                "BeforeAgent": [{"command": "omnimem capture --prompt"}],
+                "AfterTool": [{"command": "omnimem capture --tool-use"}],
+                "SessionEnd": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self {
+            agent: "gemini-cli".to_string(),
+            json,
+        }
+    }
+
+    /// Generate an OpenCode hooks snippet.
+    pub fn opencode() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "session.created": [{"command": "omnimem capture --session-start"}],
+                "message.updated": [{"command": "omnimem capture --prompt"}],
+                "tool.execute.after": [{"command": "omnimem capture --tool-use"}],
+                "session.idle": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self {
+            agent: "opencode".to_string(),
+            json,
+        }
+    }
+
+    /// Generate a generic snippet for any agent.
     pub fn generic(agent: Agent) -> Self {
         let name = match agent {
             Agent::ClaudeCode => "claude-code",
@@ -93,7 +157,10 @@ impl HookConfig {
 pub fn install(agent: Agent, config_dir: &PathBuf) -> std::io::Result<PathBuf> {
     let cfg = match agent {
         Agent::ClaudeCode => HookConfig::claude_code(),
-        other => HookConfig::generic(other),
+        Agent::Codex => HookConfig::codex(),
+        Agent::Cursor => HookConfig::cursor(),
+        Agent::GeminiCli => HookConfig::gemini_cli(),
+        Agent::OpenCode => HookConfig::opencode(),
     };
     std::fs::create_dir_all(config_dir)?;
     let path = config_dir.join(format!("omnimem-{}.json", cfg.agent));
