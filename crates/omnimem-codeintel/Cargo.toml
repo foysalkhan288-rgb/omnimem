@@ -1,0 +1,20 @@
+[package]
+name = "omnimem-codeintel"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+description = "Code intelligence for OmniMem: tree-sitter code graph, impact analysis, audit."
+readme = "README.md"
+
+[lints]
+workspace = true
+
+[dependencies]
+omnimem-core = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+serde = { workspace = true }

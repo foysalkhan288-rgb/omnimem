@@ -67,6 +67,8 @@ omnimem-backend-redb     = { path = "crates/omnimem-backend-redb",     version =
 omnimem-bench            = { path = "crates/omnimem-bench",            version = "0.1.0", default-features = false }
 omnimem-core             = { path = "crates/omnimem-core",             version = "0.1.0" }
 omnimem-core-testutils   = { path = "crates/omnimem-core-testutils" }
+omnimem-codeintel     = { path = "crates/omnimem-codeintel",     version = "0.1.0" }
+
 omnimem-config           = { path = "crates/omnimem-config",           version = "0.1.0" }
 omnimem-embed-providers  = { path = "crates/omnimem-embed-providers",  version = "0.1.0" }
 omnimem-extract          = { path = "crates/omnimem-extract",          version = "0.1.0" }
