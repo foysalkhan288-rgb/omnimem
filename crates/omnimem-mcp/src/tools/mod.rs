@@ -12,6 +12,7 @@
 //! metrics path.
 
 pub(crate) mod descriptions;
+pub mod profile;
 // Path A audit fix (2026-04-26): shared embedder resolver for
 // `omnimem_community_summarize` and `omnimem_retrieve`. Behind `summarize`
 // because the embed-providers crate only enters the dep tree under
@@ -24,6 +25,18 @@ mod handlers;
 pub(crate) mod ner;
 
 pub use descriptions::all_tools;
+pub use profile::Profile;
+
+/// Return the tool list filtered to the given profile tier.
+pub fn tools_for_profile(profile: Profile, allow_labels: bool) -> Vec<crate::protocol::ToolDef> {
+    if matches!(profile, Profile::Full) {
+        return all_tools(allow_labels);
+    }
+    all_tools(allow_labels)
+        .into_iter()
+        .filter(|t| profile.includes(t.name))
+        .collect()
+}
 
 use std::collections::BTreeMap;
 

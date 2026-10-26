@@ -26,6 +26,7 @@ pub mod tools;
 
 pub use protocol::MCP_PROTOCOL_VERSION;
 pub use server::Server;
+pub use tools::{Profile, tools_for_profile};
 
 /// Return the ordered list of tool names the server would advertise in
 /// `tools/list` for the given `allow_labels` gate. Useful in tests to
