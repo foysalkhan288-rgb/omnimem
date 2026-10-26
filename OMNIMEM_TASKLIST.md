@@ -363,7 +363,7 @@
 - [ ] 6.4.5 Keyboard shortcuts (space toggle, arrows step)
 
 ### 6.5 Auto-capture hooks
-- [ ] 6.5.1 Hook installer for Claude Code (12 hooks)
+- [x] 6.5.1 Hook installer for Claude Code (12 hooks)
 - [ ] 6.5.2 Hook installer for Codex (6 hooks)
 - [ ] 6.5.3 Hook installer for Cursor (lifecycle hooks)
 - [ ] 6.5.4 Hook installer for OpenCode, Gemini CLI, Copilot CLI, Windsurf, Kiro, Antigravity, Trae, OpenClaw, Hermes, Pi, Oh My Pi, DeepSeek Harness, WorkBuddy, Grok
