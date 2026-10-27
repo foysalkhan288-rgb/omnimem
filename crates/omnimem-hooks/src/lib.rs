@@ -16,6 +16,16 @@ pub enum Agent {
     GeminiCli,
     /// OpenCode.
     OpenCode,
+    /// Windsurf (Codeium).
+    Windsurf,
+    /// Kiro (AWS).
+    Kiro,
+    /// Antigravity.
+    Antigravity,
+    /// Trae.
+    Trae,
+    /// OpenClaw.
+    OpenClaw,
 }
 
 impl Agent {
@@ -27,6 +37,11 @@ impl Agent {
             "cursor" => Some(Self::Cursor),
             "gemini-cli" | "geminicli" | "gemini" => Some(Self::GeminiCli),
             "opencode" | "open-code" => Some(Self::OpenCode),
+            "windsurf" => Some(Self::Windsurf),
+            "kiro" => Some(Self::Kiro),
+            "antigravity" => Some(Self::Antigravity),
+            "trae" => Some(Self::Trae),
+            "openclaw" | "open-claw" => Some(Self::OpenClaw),
             _ => None,
         }
     }
@@ -39,7 +54,28 @@ impl Agent {
             Self::Cursor,
             Self::GeminiCli,
             Self::OpenCode,
+            Self::Windsurf,
+            Self::Kiro,
+            Self::Antigravity,
+            Self::Trae,
+            Self::OpenClaw,
         ]
+    }
+
+    /// Agent name string.
+    pub fn name(&self) -> &'static str {
+        match self {
+            Self::ClaudeCode => "claude-code",
+            Self::Codex => "codex",
+            Self::Cursor => "cursor",
+            Self::GeminiCli => "gemini-cli",
+            Self::OpenCode => "opencode",
+            Self::Windsurf => "windsurf",
+            Self::Kiro => "kiro",
+            Self::Antigravity => "antigravity",
+            Self::Trae => "trae",
+            Self::OpenClaw => "openclaw",
+        }
     }
 }
 
@@ -63,10 +99,7 @@ impl HookConfig {
                 "Stop": [{"command": "omnimem capture --stop"}]
             }
         });
-        Self {
-            agent: "claude-code".to_string(),
-            json,
-        }
+        Self { agent: "claude-code".to_string(), json }
     }
 
     /// Generate a Codex hooks snippet.
@@ -79,10 +112,7 @@ impl HookConfig {
                 "session_end": [{"command": "omnimem capture --stop"}]
             }
         });
-        Self {
-            agent: "codex".to_string(),
-            json,
-        }
+        Self { agent: "codex".to_string(), json }
     }
 
     /// Generate a Cursor hooks snippet.
@@ -95,10 +125,7 @@ impl HookConfig {
                 "stop": [{"command": "omnimem capture --stop"}]
             }
         });
-        Self {
-            agent: "cursor".to_string(),
-            json,
-        }
+        Self { agent: "cursor".to_string(), json }
     }
 
     /// Generate a Gemini CLI hooks snippet.
@@ -111,10 +138,7 @@ impl HookConfig {
                 "SessionEnd": [{"command": "omnimem capture --stop"}]
             }
         });
-        Self {
-            agent: "gemini-cli".to_string(),
-            json,
-        }
+        Self { agent: "gemini-cli".to_string(), json }
     }
 
     /// Generate an OpenCode hooks snippet.
@@ -127,41 +151,99 @@ impl HookConfig {
                 "session.idle": [{"command": "omnimem capture --stop"}]
             }
         });
-        Self {
-            agent: "opencode".to_string(),
-            json,
-        }
+        Self { agent: "opencode".to_string(), json }
+    }
+
+    /// Generate a Windsurf hooks snippet.
+    pub fn windsurf() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "pre_user_prompt": [{"command": "omnimem capture --prompt"}],
+                "post_tool_use": [{"command": "omnimem capture --tool-use"}],
+                "session_end": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self { agent: "windsurf".to_string(), json }
+    }
+
+    /// Generate a Kiro hooks snippet.
+    pub fn kiro() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "onPrompt": [{"command": "omnimem capture --prompt"}],
+                "onToolUse": [{"command": "omnimem capture --tool-use"}],
+                "onSessionEnd": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self { agent: "kiro".to_string(), json }
+    }
+
+    /// Generate an Antigravity hooks snippet.
+    pub fn antigravity() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "prompt": [{"command": "omnimem capture --prompt"}],
+                "tool_use": [{"command": "omnimem capture --tool-use"}],
+                "stop": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self { agent: "antigravity".to_string(), json }
+    }
+
+    /// Generate a Trae hooks snippet.
+    pub fn trae() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "onPromptSubmit": [{"command": "omnimem capture --prompt"}],
+                "onToolUse": [{"command": "omnimem capture --tool-use"}],
+                "onStop": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self { agent: "trae".to_string(), json }
+    }
+
+    /// Generate an OpenClaw hooks snippet.
+    pub fn openclaw() -> Self {
+        let json = serde_json::json!({
+            "hooks": {
+                "prompt": [{"command": "omnimem capture --prompt"}],
+                "tool": [{"command": "omnimem capture --tool-use"}],
+                "stop": [{"command": "omnimem capture --stop"}]
+            }
+        });
+        Self { agent: "openclaw".to_string(), json }
     }
 
     /// Generate a generic snippet for any agent.
     pub fn generic(agent: Agent) -> Self {
-        let name = match agent {
-            Agent::ClaudeCode => "claude-code",
-            Agent::Codex => "codex",
-            Agent::Cursor => "cursor",
-            Agent::GeminiCli => "gemini-cli",
-            Agent::OpenCode => "opencode",
-        };
+        let name = agent.name();
         let json = serde_json::json!({
             "agent": name,
             "note": "Merge into your agent's settings; see docs/hooks.md"
         });
-        Self {
-            agent: name.to_string(),
-            json,
+        Self { agent: name.to_string(), json }
+    }
+
+    /// Generate config for the given agent.
+    pub fn for_agent(agent: Agent) -> Self {
+        match agent {
+            Agent::ClaudeCode => Self::claude_code(),
+            Agent::Codex => Self::codex(),
+            Agent::Cursor => Self::cursor(),
+            Agent::GeminiCli => Self::gemini_cli(),
+            Agent::OpenCode => Self::opencode(),
+            Agent::Windsurf => Self::windsurf(),
+            Agent::Kiro => Self::kiro(),
+            Agent::Antigravity => Self::antigravity(),
+            Agent::Trae => Self::trae(),
+            Agent::OpenClaw => Self::openclaw(),
         }
     }
 }
 
 /// Install hooks for `agent` into `config_dir`. Returns the path written.
 pub fn install(agent: Agent, config_dir: &PathBuf) -> std::io::Result<PathBuf> {
-    let cfg = match agent {
-        Agent::ClaudeCode => HookConfig::claude_code(),
-        Agent::Codex => HookConfig::codex(),
-        Agent::Cursor => HookConfig::cursor(),
-        Agent::GeminiCli => HookConfig::gemini_cli(),
-        Agent::OpenCode => HookConfig::opencode(),
-    };
+    let cfg = HookConfig::for_agent(agent);
     std::fs::create_dir_all(config_dir)?;
     let path = config_dir.join(format!("omnimem-{}.json", cfg.agent));
     let content = serde_json::to_string_pretty(&cfg.json).unwrap_or_default();
@@ -183,6 +265,14 @@ mod tests {
     fn claude_config_has_hooks() {
         let c = HookConfig::claude_code();
         assert!(c.json.get("hooks").is_some());
+    }
+
+    #[test]
+    fn all_agents_have_config() {
+        for agent in Agent::all() {
+            let cfg = HookConfig::for_agent(*agent);
+            assert!(!cfg.agent.is_empty());
+        }
     }
 
     #[test]
