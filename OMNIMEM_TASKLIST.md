@@ -299,9 +299,9 @@
 - [x] 5.4.4 `audit` MCP/CLI tool
 
 ### 5.5 Code↔memory links
-- [ ] 5.5.1 Link memory nodes to code symbols (file path, symbol name)
-- [ ] 5.5.2 Communities/hotspots (fan-in, complexity signals)
-- [ ] 5.5.3 git/PR impact analysis (changed files → affected symbols → tests)
+- [x] 5.5.1 Link memory nodes to code symbols (file path, symbol name)
+- [x] 5.5.2 Communities/hotspots (fan-in, complexity signals)
+- [x] 5.5.3 git/PR impact analysis (changed files → affected symbols → tests)
 
 ### 5.6 Knowledge base (docs)
 - [ ] 5.6.1 Index markdown docs → semantic retrieval
