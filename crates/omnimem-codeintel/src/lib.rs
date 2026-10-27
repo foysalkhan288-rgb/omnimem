@@ -5,6 +5,7 @@
 //! N-hop impact analysis, community detection, and audit passes (dead code,
 //! naming conventions, security scan).
 
+pub mod api;
 pub mod audit;
 pub mod codelink;
 pub mod community;
@@ -15,6 +16,7 @@ pub mod parser;
 pub mod watcher;
 pub mod workspace;
 
+pub use api::{ApiEndpoint, ApiService, service_lookup};
 pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
 pub use codelink::{CodeLink, build_links, find_referenced_symbols};
 pub use community::{CommunityMap, detect_communities};
