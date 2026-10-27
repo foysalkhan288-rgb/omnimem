@@ -367,7 +367,7 @@
 - [x] 6.5.2 Hook installer for Codex (6 hooks)
 - [x] 6.5.3 Hook installer for Cursor (lifecycle hooks)
 - [x] 6.5.4 Hook installer for OpenCode, Gemini CLI, Copilot CLI, Windsurf, Kiro, Antigravity, Trae, OpenClaw, Hermes, Pi, Oh My Pi, DeepSeek Harness, WorkBuddy, Grok
-- [ ] 6.5.5 Secret scrubbing in capture
+- [x] 6.5.5 Secret scrubbing in capture
 - [ ] 6.5.6 Offline replay (spool + drain)
 - [ ] 6.5.7 `omnimem capture` / `capture --drain`
 
