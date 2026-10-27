@@ -305,8 +305,8 @@
 
 ### 5.6 Knowledge base (docs)
 - [x] 5.6.1 Index markdown docs → semantic retrieval
-- [ ] 5.6.2 API discovery (OpenAPI specs + controller annotations)
-- [ ] 5.6.3 Service-level lookup (one call → full architecture)
+- [x] 5.6.2 API discovery (OpenAPI specs + controller annotations)
+- [x] 5.6.3 Service-level lookup (one call → full architecture)
 
 ### 5.7 Auto-sync watcher
 - [x] 5.7.1 File watcher (notify crate) per registered project
