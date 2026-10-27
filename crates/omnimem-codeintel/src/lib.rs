@@ -6,6 +6,7 @@
 //! naming conventions, security scan).
 
 pub mod audit;
+pub mod codelink;
 pub mod community;
 pub mod error;
 pub mod graph;
@@ -14,6 +15,7 @@ pub mod watcher;
 pub mod workspace;
 
 pub use audit::{DeadCodeFinding, SecurityFinding, dead_code, security_scan};
+pub use codelink::{CodeLink, build_links, find_referenced_symbols};
 pub use community::{CommunityMap, detect_communities};
 pub use error::{CodeIntelError, Result};
 pub use graph::CodeGraph;
