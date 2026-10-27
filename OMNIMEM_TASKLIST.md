@@ -304,7 +304,7 @@
 - [x] 5.5.3 git/PR impact analysis (changed files → affected symbols → tests)
 
 ### 5.6 Knowledge base (docs)
-- [ ] 5.6.1 Index markdown docs → semantic retrieval
+- [x] 5.6.1 Index markdown docs → semantic retrieval
 - [ ] 5.6.2 API discovery (OpenAPI specs + controller annotations)
 - [ ] 5.6.3 Service-level lookup (one call → full architecture)
 
