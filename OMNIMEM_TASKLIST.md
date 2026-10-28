@@ -422,8 +422,8 @@
 - [ ] 7.4.4 Homebrew formula
 - [ ] 7.4.5 Scoop manifest (Windows)
 - [ ] 7.4.6 AUR package (Arch)
-- [ ] 7.4.7 Docker image (optional, for shared server)
-- [ ] 7.4.8 Install scripts (install.sh, install.ps1)
+- [x] 7.4.7 Docker image (optional, for shared server)
+- [x] 7.4.8 Install scripts (install.sh, install.ps1)
 - [ ] 7.4.9 Auto-update mechanism
 
 ### 7.5 Release
