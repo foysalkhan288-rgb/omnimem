@@ -419,9 +419,9 @@
 - [ ] 7.4.1 Cargo publish (`omnimem-cli`, `omnimem-core`, etc.)
 - [ ] 7.4.2 npm package (`@omnimem/cli`, `@omnimem/mcp`)
 - [ ] 7.4.3 PyPI package (`omnimem`)
-- [ ] 7.4.4 Homebrew formula
-- [ ] 7.4.5 Scoop manifest (Windows)
-- [ ] 7.4.6 AUR package (Arch)
+- [x] 7.4.4 Homebrew formula
+- [x] 7.4.5 Scoop manifest (Windows)
+- [x] 7.4.6 AUR package (Arch)
 - [x] 7.4.7 Docker image (optional, for shared server)
 - [x] 7.4.8 Install scripts (install.sh, install.ps1)
 - [ ] 7.4.9 Auto-update mechanism
