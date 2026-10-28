@@ -397,7 +397,7 @@
 - [x] 7.1.6 Token cost measurement (tokens/yr, $/yr)
 
 ### 7.2 Testing
-- [ ] 7.2.1 Unit tests for all modules (target ≥80% coverage)
+- [x] 7.2.1 Unit tests for all modules (target ≥80% coverage)
 - [ ] 7.2.2 Integration tests: commit DAG, branch/merge, tombstone, resolve
 - [ ] 7.2.3 Integration tests: ingest determinism (same input → same graph)
 - [ ] 7.2.4 Integration tests: retrieval (hybrid, budget, abstain, bi-temporal)
