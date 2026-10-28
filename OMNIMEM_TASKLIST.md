@@ -389,12 +389,12 @@
 ## Phase 7 — Quality & Release (Weeks 18–20)
 
 ### 7.1 Benchmark harness
-- [ ] 7.1.1 Implement eval harness (adapter-pluggable, NDJSON output)
-- [ ] 7.1.2 LongMemEval-S adapter (500 questions) — target ≥95% R@5
-- [ ] 7.1.3 coding-agent-life-v1 adapter (15 sessions) — target 100% R@5
-- [ ] 7.1.4 LoCoMo adapter (10 conversations) — track R@5
-- [ ] 7.1.5 Reproducible scorecards in `docs/benchmarks/`
-- [ ] 7.1.6 Token cost measurement (tokens/yr, $/yr)
+- [x] 7.1.1 Implement eval harness (adapter-pluggable, NDJSON output)
+- [x] 7.1.2 LongMemEval-S adapter (500 questions) — target ≥95% R@5
+- [x] 7.1.3 coding-agent-life-v1 adapter (15 sessions) — target 100% R@5
+- [x] 7.1.4 LoCoMo adapter (10 conversations) — track R@5
+- [x] 7.1.5 Reproducible scorecards in `docs/benchmarks/`
+- [x] 7.1.6 Token cost measurement (tokens/yr, $/yr)
 
 ### 7.2 Testing
 - [ ] 7.2.1 Unit tests for all modules (target ≥80% coverage)
