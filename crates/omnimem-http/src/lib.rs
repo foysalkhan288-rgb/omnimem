@@ -332,6 +332,7 @@ pub fn app_with_options(repo_dir: &Path, opts: AppOptions) -> Result<Router> {
         .route("/v1/ingest", post(handlers_ingest::ingest))
         .route("/v1/explain", post(handlers::explain))
         .route("/viewer", get(handlers::viewer))
+        .route("/viewer/replay", get(handlers::viewer_replay))
         // gap-09: `/v1/traverse_answer` is registered but gated by
         // `experimental.single_call_multihop` (default OFF). With the
         // flag off the handler returns 410 Gone + opt-in pointer; with

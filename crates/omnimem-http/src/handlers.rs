@@ -7886,3 +7886,31 @@ a { color: #4a148c; }
 <p style="color:#888;font-size:.85rem;">OmniMem HTTP viewer (v1 skeleton). Session replay coming in Phase 6.</p>
 </body>
 </html>"#;
+/// `GET /viewer/replay` - session replay timeline (recent operations as JSON).
+pub(crate) async fn viewer_replay(
+    State(s): State<AppState>,
+) -> Result<Json<Value>, Error> {
+    let repo = s.repo.lock().map_err(|_| Error::locked())?;
+    let bs = repo.blockstore().clone();
+    let mut cur = repo.op_id().clone();
+    drop(repo);
+    let mut entries: Vec<Value> = Vec::new();
+    for _ in 0..50 {
+        let (op, next) = match read_op(bs.as_ref(), &cur) {
+            Ok(r) => r,
+            Err(_) => break,
+        };
+        entries.push(json!({
+            "cid": cur.to_string(),
+            "time": op.time,
+            "author": op.author,
+            "description": op.description,
+            "agent_id": op.agent_id,
+        }));
+        match next {
+            Some(n) => cur = n,
+            None => break,
+        }
+    }
+    Ok(Json(json!({"schema": "omnimem.v1.replay", "entries": entries})))
+}
