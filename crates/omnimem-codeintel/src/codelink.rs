@@ -17,19 +17,42 @@ pub struct CodeLink {
 }
 
 /// Find code symbols referenced in `text` by matching against the
-/// code graph's symbol names. Returns (symbol_name, file) pairs.
+/// code graph's symbol names. Uses word boundaries to avoid false
+/// positives from substring matches.
 pub fn find_referenced_symbols(graph: &CodeGraph, text: &str) -> Vec<(String, PathBuf)> {
     let mut out = Vec::new();
     let mut seen: std::collections::HashSet<String> = std::collections::HashSet::new();
     for (file, syms) in &graph.files {
         for sym in syms {
-            if sym.name.len() >= 3 && text.contains(&sym.name) && !seen.contains(&sym.name) {
+            if sym.name.len() < 3 || seen.contains(&sym.name) {
+                continue;
+            }
+            if is_word_boundary_match(text, &sym.name) {
                 seen.insert(sym.name.clone());
                 out.push((sym.name.clone(), file.clone()));
             }
         }
     }
     out
+}
+
+fn is_word_boundary_match(text: &str, needle: &str) -> bool {
+    let mut start = 0;
+    while let Some(pos) = text[start..].find(needle) {
+        let abs = start + pos;
+        let before_ok = abs == 0
+            || (!text.as_bytes()[abs - 1].is_ascii_alphanumeric()
+                && text.as_bytes()[abs - 1] != b'_');
+        let after = abs + needle.len();
+        let after_ok = after >= text.len()
+            || (!text.as_bytes()[after].is_ascii_alphanumeric()
+                && text.as_bytes()[after] != b'_');
+        if before_ok && after_ok {
+            return true;
+        }
+        start = abs + 1;
+    }
+    false
 }
 
 /// Build code links from a text (e.g. a memory node's content) by
