@@ -69,7 +69,7 @@ pub fn detect_communities(graph: &CodeGraph) -> CommunityMap {
     }
     let mut result = CommunityMap::new();
     for (i, file) in files.iter().enumerate() {
-        result.insert(file.clone(), remap[&labels[i]]);
+        result.insert(file.clone(), *remap.get(&labels[i]).unwrap_or(&0));
     }
     result
 }
