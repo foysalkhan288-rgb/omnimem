@@ -357,7 +357,7 @@
 
 ### 6.4 Real-time viewer
 - [x] 6.4.1 Live memory build view
-- [ ] 6.4.2 Memory browser (filter, edit, delete, forget)
+- [x] 6.4.2 Memory browser (filter, edit, delete, forget)
 - [ ] 6.4.3 Graph visualization (basic: nodes/edges, search)
 - [ ] 6.4.4 Session replay (timeline scrubber, play/pause, speed 0.5x–4x)
 - [ ] 6.4.5 Keyboard shortcuts (space toggle, arrows step)
