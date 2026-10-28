@@ -59,7 +59,7 @@ impl KnowledgeBase {
         let mut current_heading = String::new();
         let mut current_level: u8 = 0;
         let mut body = String::new();
-        let mut start_idx = self.sections.len();
+        let start_idx = self.sections.len();
 
         for line in content.lines() {
             if let Some((level, heading)) = parse_heading(line) {

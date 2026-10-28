@@ -1,6 +1,5 @@
 //! API discovery: parse OpenAPI specs and extract endpoints.
 
-use std::collections::HashMap;
 use std::path::Path;
 use std::path::PathBuf;
 

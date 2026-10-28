@@ -68,7 +68,7 @@ fn parse_rust(source: &str) -> Result<Vec<Symbol>> {
     Ok(out)
 }
 
-fn collect_rust(node: &tree_sitter::Node, source: &str, out: &mut Vec<Symbol>) {
+fn collect_rust<'a>(node: &tree_sitter::Node<'a>, source: &str, out: &mut Vec<Symbol>) {
     let kind = node.kind();
     if kind == "function_item" {
         if let Some(name_node) = node.child_by_field_name("name") {
@@ -111,7 +111,7 @@ fn parse_python(source: &str) -> Result<Vec<Symbol>> {
     Ok(out)
 }
 
-fn collect_python(node: &tree_sitter::Node, source: &str, out: &mut Vec<Symbol>) {
+fn collect_python<'a>(node: &tree_sitter::Node<'a>, source: &str, out: &mut Vec<Symbol>) {
     let kind = node.kind();
     if kind == "function_definition" {
         if let Some(name_node) = node.child_by_field_name("name") {
@@ -154,7 +154,7 @@ fn parse_typescript(source: &str) -> Result<Vec<Symbol>> {
     Ok(out)
 }
 
-fn collect_ts(node: &tree_sitter::Node, source: &str, out: &mut Vec<Symbol>) {
+fn collect_ts<'a>(node: &tree_sitter::Node<'a>, source: &str, out: &mut Vec<Symbol>) {
     let kind = node.kind();
     if kind == "function_declaration" || kind == "method_definition" {
         if let Some(name_node) = node.child_by_field_name("name") {
@@ -201,7 +201,7 @@ fn parse_go(source: &str) -> Result<Vec<Symbol>> {
     Ok(out)
 }
 
-fn collect_go(node: &tree_sitter::Node, source: &str, out: &mut Vec<Symbol>) {
+fn collect_go<'a>(node: &tree_sitter::Node<'a>, source: &str, out: &mut Vec<Symbol>) {
     let kind = node.kind();
     if kind == "function_declaration" || kind == "method_declaration" {
         if let Some(name_node) = node.child_by_field_name("name") {
