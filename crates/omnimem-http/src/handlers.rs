@@ -7869,6 +7869,10 @@ body { font-family: system-ui, sans-serif; margin: 2rem; color: #222; }
 h1 { color: #4a148c; }
 .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
 a { color: #4a148c; }
+#timeline { width: 100%; height: 8px; background: #eee; border-radius: 4px; cursor: pointer; }
+#playBtn { padding: .5rem 1rem; background: #4a148c; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+.entry { padding: .5rem; border-bottom: 1px solid #eee; font-size: .9rem; }
+.entry time { color: #888; }
 </style>
 </head>
 <body>
@@ -7881,9 +7885,51 @@ a { color: #4a148c; }
     <li><a href="/v1/stats">Stats</a></li>
     <li><a href="/v1/log">Op log</a></li>
     <li><a href="/v1/tags">Tags</a></li>
+    <li><a href="/viewer/replay">Replay JSON</a></li>
   </ul>
 </div>
-<p style="color:#888;font-size:.85rem;">OmniMem HTTP viewer (v1 skeleton). Session replay coming in Phase 6.</p>
+<div class="card">
+  <h2>Session Replay</h2>
+  <button id="playBtn">Play</button>
+  <div id="timeline" style="margin: 1rem 0;"></div>
+  <div id="entries"></div>
+  <p style="color:#888;font-size:.8rem;">Keyboard: Space = play/pause, Left/Right = step, +/- = speed.</p>
+</div>
+<script>
+let entries = [];
+let idx = 0;
+let playing = false;
+let speed = 1;
+let timer = null;
+async function load() {
+  const r = await fetch('/viewer/replay');
+  const d = await r.json();
+  entries = d.entries || [];
+  render();
+}
+function render() {
+  const el = document.getElementById('entries');
+  el.innerHTML = entries.map((e,i) => `<div class="entry" style="opacity:${i<=idx?1:.3}"><time>${new Date(e.time/1000).toISOString()}</time> ${e.description||''} <small>(${e.agent_id||'?'})</small></div>`).join('');
+}
+function step(n) { idx = Math.max(0, Math.min(entries.length-1, idx+n)); render(); }
+function toggle() {
+  playing = !playing;
+  document.getElementById('playBtn').textContent = playing ? 'Pause' : 'Play';
+  if (playing) {
+    timer = setInterval(() => { if (idx < entries.length-1) step(1); else { playing=false; document.getElementById('playBtn').textContent='Play'; clearInterval(timer); } }, 1000/speed);
+  } else { clearInterval(timer); }
+}
+document.getElementById('playBtn').onclick = toggle;
+document.addEventListener('keydown', e => {
+  if (e.code === 'Space') { e.preventDefault(); toggle(); }
+  else if (e.code === 'ArrowLeft') step(-1);
+  else if (e.code === 'ArrowRight') step(1);
+  else if (e.code === 'Equal' || e.code === 'NumpadAdd') { speed = Math.min(4, speed*2); }
+  else if (e.code === 'Minus' || e.code === 'NumpadSubtract') { speed = Math.max(0.5, speed/2); }
+});
+load();
+</script>
+<p style="color:#888;font-size:.85rem;">OmniMem HTTP viewer (Phase 6). Full session replay with timeline scrubber.</p>
 </body>
 </html>"#;
 /// `GET /viewer/replay` - session replay timeline (recent operations as JSON).
