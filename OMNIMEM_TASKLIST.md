@@ -378,9 +378,9 @@
 - [x] 6.6.4 `omnimem setup --target <agent>` deploys harness
 
 ### 6.7 Cross-agent shared memory
-- [ ] 6.7.1 Shared store across agents (one server, many clients)
-- [ ] 6.7.2 Project attribution (per-session project binding)
-- [ ] 6.7.3 `memorix_session_start`-style project binding
+- [x] 6.7.1 Shared store across agents (one server, many clients)
+- [x] 6.7.2 Project attribution (per-session project binding)
+- [x] 6.7.3 `memorix_session_start`-style project binding
 
 **Phase 6 exit criteria:** MCP server connects to Claude Code + Cursor + Codex; viewer + replay functional; hooks capture on 3 agents; `omnimem setup` works.
 
