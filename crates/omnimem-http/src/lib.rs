@@ -40,11 +40,13 @@ mod handlers_ingest;
 mod metrics;
 mod remote_rate_limit;
 mod routes;
+mod shared;
 mod state;
 
 pub use error::{Error, RemoteError};
 pub use handlers::derive_max_path_bytes;
 pub use metrics::Metrics;
+pub use shared::SharedStore;
 pub use state::AppState;
 
 /// Gap 10 Phase-1 public surface: exposed for integration tests and
