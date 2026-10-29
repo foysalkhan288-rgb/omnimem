@@ -2,7 +2,20 @@
 
 use crate::graph::CodeGraph;
 use std::path::{Path, PathBuf};
+use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::mpsc;
+
+static AUTO_WATCH_ENABLED: AtomicBool = AtomicBool::new(true);
+
+/// Enable or disable the global auto-watch toggle.
+pub fn set_auto_watch(enabled: bool) {
+    AUTO_WATCH_ENABLED.store(enabled, Ordering::Relaxed);
+}
+
+/// Check if auto-watch is enabled globally.
+pub fn auto_watch_enabled() -> bool {
+    AUTO_WATCH_ENABLED.load(Ordering::Relaxed)
+}
 
 /// A file-watcher that rebuilds the code graph on changes.
 pub struct Watcher {

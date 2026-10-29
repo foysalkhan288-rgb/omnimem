@@ -25,7 +25,7 @@
  - [x] 0.2.2 GitHub Actions: `cargo test --workspace`
  - [x] 0.2.3 GitHub Actions: `cargo clippy -- -D warnings`
  - [x] 0.2.4 GitHub Actions: `cargo fmt --check`
-- [ ] 0.2.5 Pre-commit hooks (rustfmt, clippy)
+- [x] 0.2.5 Pre-commit hooks (rustfmt, clippy)
  - [x] 0.2.6 Release workflow (tag → build binaries → GitHub Release)
  - [x] 0.2.7 Dependabot / cargo-deny for supply chain
 
@@ -408,12 +408,12 @@
 
 ### 7.3 Documentation
 - [x] 7.3.1 User guide (quickstart, concepts, config)
-- [ ] 7.3.2 MCP tool reference (all tools, params, examples)
-- [ ] 7.3.3 CLI reference
+- [x] 7.3.2 MCP tool reference (all tools, params, examples)
+- [x] 7.3.3 CLI reference
 - [x] 7.3.4 Architecture doc
-- [ ] 7.3.5 Benchmark methodology + reproduction
-- [ ] 7.3.6 Migration guide (from mnem, memorix, etc.)
-- [ ] 7.3.7 AGENTS.md / CLAUDE.md integration snippets
+- [x] 7.3.5 Benchmark methodology + reproduction
+- [x] 7.3.6 Migration guide (from mnem, memorix, etc.)
+- [x] 7.3.7 AGENTS.md / CLAUDE.md integration snippets
 
 ### 7.4 Packaging & distribution
 - [x] 7.4.1 Cargo publish (`omnimem-cli`, `omnimem-core`, etc.)
@@ -424,13 +424,13 @@
 - [x] 7.4.6 AUR package (Arch)
 - [x] 7.4.7 Docker image (optional, for shared server)
 - [x] 7.4.8 Install scripts (install.sh, install.ps1)
-- [ ] 7.4.9 Auto-update mechanism
+- [x] 7.4.9 Auto-update mechanism
 
 ### 7.5 Release
 - [x] 7.5.1 v1.0.0 release notes
-- [ ] 7.5.2 GitHub Release with binaries (Linux, macOS, Windows)
-- [ ] 7.5.3 Checksums + SBOM
-- [ ] 7.5.4 Announcement (README, docs, social)
+- [x] 7.5.2 GitHub Release with binaries (Linux, macOS, Windows)
+- [x] 7.5.3 Checksums + SBOM
+- [x] 7.5.4 Announcement (README, docs, social)
 
 **Phase 7 exit criteria:** all v1 success criteria (§12 of plan) met; benchmarks ≥ targets; docs complete; packages published.
 

@@ -24,7 +24,7 @@ pub use error::{CodeIntelError, Result};
 pub use graph::CodeGraph;
 pub use knowledge::{DocSection, KnowledgeBase};
 pub use parser::{Symbol, SymbolKind, language_for_path, parse_symbols};
-pub use watcher::Watcher;
+pub use watcher::{Watcher, auto_watch_enabled, set_auto_watch};
 pub use workspace::Workspace;
 
 use std::path::Path;

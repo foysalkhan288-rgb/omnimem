@@ -1,19 +1,27 @@
 # Ingestion
 
-How documents and data are ingested into OmniMem.
-
 ## Overview
 
-Placeholder — ingestion pipeline and supported formats.
+OmniMem ingests files deterministically with $0 LLM cost. The same input always produces the same knowledge graph.
 
-## Chunking
+## Supported formats
 
-Placeholder — chunking strategies and token budgets.
+- **Markdown** (.md, .mdx): heading-aware chunking, preserves hierarchy
+- **Code** (.rs, .py, .ts, .go, .java, ...): tree-sitter AST parsing, extracts functions/classes/methods, CALLS edges
+- **PDF**: sliding window with configurable max_tokens and overlap
+- **JSONL transcripts**: Claude Code session import
+- **Plain text**: paragraph splitting
 
-## Entity Extraction
+## Commands
 
-Placeholder — rule-based and LLM-based entity extraction.
+```bash
+omnimem ingest .              # auto-detect all files in directory
+omnimem ingest file.md        # single file
+omnimem ingest --text "..."   # inline text
+```
 
-## Committing
+## Determinism
 
-Placeholder — committing ingested content as a graph subgraph.
+- Content hashing (BLAKE3) ensures re-ingesting unchanged files is a no-op.
+- No LLM calls during ingestion.
+- Reproducible across machines.
