@@ -1,0 +1,20 @@
+{
+  "name": "@omnimem/cli",
+  "version": "0.1.0",
+  "description": "Git for AI Agent Knowledge - local-first agent memory and code intelligence",
+  "bin": {
+    "omnimem": "bin/omnimem"
+  },
+  "scripts": {
+    "postinstall": "node scripts/install.js"
+  },
+  "files": ["bin/", "scripts/"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foysalkhan288-rgb/omnimem.git"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=18"
+  }
+}
