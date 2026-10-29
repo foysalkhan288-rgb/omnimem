@@ -416,7 +416,7 @@
 - [ ] 7.3.7 AGENTS.md / CLAUDE.md integration snippets
 
 ### 7.4 Packaging & distribution
-- [ ] 7.4.1 Cargo publish (`omnimem-cli`, `omnimem-core`, etc.)
+- [x] 7.4.1 Cargo publish (`omnimem-cli`, `omnimem-core`, etc.)
 - [x] 7.4.2 npm package (`@omnimem/cli`, `@omnimem/mcp`)
 - [x] 7.4.3 PyPI package (`omnimem`)
 - [x] 7.4.4 Homebrew formula
@@ -427,7 +427,7 @@
 - [ ] 7.4.9 Auto-update mechanism
 
 ### 7.5 Release
-- [ ] 7.5.1 v1.0.0 release notes
+- [x] 7.5.1 v1.0.0 release notes
 - [ ] 7.5.2 GitHub Release with binaries (Linux, macOS, Windows)
 - [ ] 7.5.3 Checksums + SBOM
 - [ ] 7.5.4 Announcement (README, docs, social)
