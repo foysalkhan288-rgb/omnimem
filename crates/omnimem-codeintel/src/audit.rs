@@ -86,16 +86,9 @@ pub fn security_scan(root: &Path) -> Vec<SecurityFinding> {
         .filter(|e| e.file_type().is_file())
     {
         let path = entry.path();
-        // skip binary-ish
-        if path.extension().and_then(|e| e.to_str()) == Some("rs")
-            || path.extension().and_then(|e| e.to_str()) == Some("py")
-            || path.extension().and_then(|e| e.to_str()) == Some("ts")
-            || path.extension().and_then(|e| e.to_str()) == Some("js")
-            || path.extension().and_then(|e| e.to_str()) == Some("go")
-            || path.extension().and_then(|e| e.to_str()) == Some("toml")
-            || path.extension().and_then(|e| e.to_str()) == Some("env")
-        {
-        } else {
+        let ext = path.extension().and_then(|e| e.to_str()).unwrap_or("").to_lowercase();
+        let allowed = matches!(ext.as_str(), "rs" | "py" | "ts" | "js" | "go" | "toml" | "env");
+        if !allowed {
             continue;
         }
         let content = match std::fs::read_to_string(path) {

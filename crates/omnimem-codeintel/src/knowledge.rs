@@ -35,8 +35,8 @@ impl KnowledgeBase {
             .filter(|e| e.file_type().is_file())
         {
             let path = entry.path();
-            let ext = path.extension().and_then(|e| e.to_str()).unwrap_or("");
-            if !matches!(ext, "md" | "mdx" | "rst" | "txt") {
+            let ext = path.extension().and_then(|e| e.to_str()).unwrap_or("").to_lowercase();
+            if !matches!(ext.as_str(), "md" | "mdx" | "rst" | "txt") {
                 continue;
             }
             // skip hidden/target/node_modules

@@ -31,12 +31,13 @@ pub struct Symbol {
 
 /// Detect the language from a file path.
 pub fn language_for_path(path: &Path) -> Option<&'static str> {
-    match path.extension().and_then(|e| e.to_str()) {
-        Some("rs") => Some("rust"),
-        Some("py") => Some("python"),
-        Some("ts") | Some("tsx") => Some("typescript"),
-        Some("go") => Some("go"),
-        Some("js") | Some("jsx") => Some("javascript"),
+    let ext = path.extension().and_then(|e| e.to_str())?.to_lowercase();
+    match ext.as_str() {
+        "rs" => Some("rust"),
+        "py" => Some("python"),
+        "ts" | "tsx" => Some("typescript"),
+        "go" => Some("go"),
+        "js" | "jsx" => Some("javascript"),
         _ => None,
     }
 }
