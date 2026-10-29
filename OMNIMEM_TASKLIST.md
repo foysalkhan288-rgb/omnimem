@@ -326,41 +326,41 @@
 ## Phase 6 — Surfaces & Hooks (Weeks 15–17)
 
 ### 6.1 MCP server
-- [ ] 6.1.1 MCP stdio server (JSON-RPC 2.0)
+- [x] 6.1.1 MCP stdio server (JSON-RPC 2.0)
 - [x] 6.1.2 Tool profiles: micro (9), lite (21), team (29), full (48+)
-- [ ] 6.1.3 Tool annotations (readOnlyHint, destructiveHint, idempotentHint, openWorldHint)
-- [ ] 6.1.4 MCP resources (`omnimem://node/{id}`, `.../session/{id}`, `.../graph/stats`)
-- [ ] 6.1.5 MCP prompts (`remember`, `reflect`, `correct`, `summarize`)
-- [ ] 6.1.6 Content-Length framing, 8 MiB limit, validation (agentic-memory pattern)
+- [x] 6.1.3 Tool annotations (readOnlyHint, destructiveHint, idempotentHint, openWorldHint)
+- [x] 6.1.4 MCP resources (`omnimem://node/{id}`, `.../session/{id}`, `.../graph/stats`)
+- [x] 6.1.5 MCP prompts (`remember`, `reflect`, `correct`, `summarize`)
+- [x] 6.1.6 Content-Length framing, 8 MiB limit, validation (agentic-memory pattern)
 
 ### 6.2 CLI
-- [ ] 6.2.1 `omnimem init` (per-repo or global)
-- [ ] 6.2.2 `omnimem ingest` (file/dir/text)
-- [ ] 6.2.3 `omnimem retrieve` / `search` / `recall`
-- [ ] 6.2.4 `omnimem add node|edge`
-- [ ] 6.2.5 `omnimem branch` / `merge` / `diff` / `revert`
-- [ ] 6.2.6 `omnimem tombstone` / `resolve`
-- [ ] 6.2.7 `omnimem gc` / `conflicts` / `receipts`
-- [ ] 6.2.8 `omnimem distill`
-- [ ] 6.2.9 `omnimem setup --agent <name>` (auto-setup)
-- [ ] 6.2.10 `omnimem doctor` (diagnostics)
-- [ ] 6.2.11 `omnimem status` / `stop` / `upgrade`
-- [ ] 6.2.12 `--json` output for scripting
-- [ ] 6.2.13 `--cwd` for project binding
+- [x] 6.2.1 `omnimem init` (per-repo or global)
+- [x] 6.2.2 `omnimem ingest` (file/dir/text)
+- [x] 6.2.3 `omnimem retrieve` / `search` / `recall`
+- [x] 6.2.4 `omnimem add node|edge`
+- [x] 6.2.5 `omnimem branch` / `merge` / `diff` / `revert`
+- [x] 6.2.6 `omnimem tombstone` / `resolve`
+- [x] 6.2.7 `omnimem gc` / `conflicts` / `receipts`
+- [x] 6.2.8 `omnimem distill`
+- [x] 6.2.9 `omnimem setup --agent <name>` (auto-setup)
+- [x] 6.2.10 `omnimem doctor` (diagnostics)
+- [x] 6.2.11 `omnimem status` / `stop` / `upgrade`
+- [x] 6.2.12 `--json` output for scripting
+- [x] 6.2.13 `--cwd` for project binding
 
 ### 6.3 HTTP server
-- [ ] 6.3.1 Axum HTTP server (REST + MCP-over-HTTP)
-- [ ] 6.3.2 Auth (bearer token, auto-generated secret)
-- [ ] 6.3.3 Health endpoints (`/livez`, `/health`)
-- [ ] 6.3.4 Viewer serving (static assets embedded)
-- [ ] 6.3.5 Shared server mode (multi-agent, leases + signals)
+- [x] 6.3.1 Axum HTTP server (REST + MCP-over-HTTP)
+- [x] 6.3.2 Auth (bearer token, auto-generated secret)
+- [x] 6.3.3 Health endpoints (`/livez`, `/health`)
+- [x] 6.3.4 Viewer serving (static assets embedded)
+- [x] 6.3.5 Shared server mode (multi-agent, leases + signals)
 
 ### 6.4 Real-time viewer
 - [x] 6.4.1 Live memory build view
 - [x] 6.4.2 Memory browser (filter, edit, delete, forget)
 - [x] 6.4.3 Graph visualization (basic: nodes/edges, search)
 - [x] 6.4.4 Session replay (timeline scrubber, play/pause, speed 0.5x–4x)
-- [ ] 6.4.5 Keyboard shortcuts (space toggle, arrows step)
+- [x] 6.4.5 Keyboard shortcuts (space toggle, arrows step)
 
 ### 6.5 Auto-capture hooks
 - [x] 6.5.1 Hook installer for Claude Code (12 hooks)
@@ -368,8 +368,8 @@
 - [x] 6.5.3 Hook installer for Cursor (lifecycle hooks)
 - [x] 6.5.4 Hook installer for OpenCode, Gemini CLI, Copilot CLI, Windsurf, Kiro, Antigravity, Trae, OpenClaw, Hermes, Pi, Oh My Pi, DeepSeek Harness, WorkBuddy, Grok
 - [x] 6.5.5 Secret scrubbing in capture
-- [ ] 6.5.6 Offline replay (spool + drain)
-- [ ] 6.5.7 `omnimem capture` / `capture --drain`
+- [x] 6.5.6 Offline replay (spool + drain)
+- [x] 6.5.7 `omnimem capture` / `capture --drain`
 
 ### 6.6 Markdown harness
 - [x] 6.6.1 `SKILL.md` template (commands, judgment)
@@ -417,8 +417,8 @@
 
 ### 7.4 Packaging & distribution
 - [ ] 7.4.1 Cargo publish (`omnimem-cli`, `omnimem-core`, etc.)
-- [ ] 7.4.2 npm package (`@omnimem/cli`, `@omnimem/mcp`)
-- [ ] 7.4.3 PyPI package (`omnimem`)
+- [x] 7.4.2 npm package (`@omnimem/cli`, `@omnimem/mcp`)
+- [x] 7.4.3 PyPI package (`omnimem`)
 - [x] 7.4.4 Homebrew formula
 - [x] 7.4.5 Scoop manifest (Windows)
 - [x] 7.4.6 AUR package (Arch)
