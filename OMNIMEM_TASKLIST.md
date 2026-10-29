@@ -398,13 +398,13 @@
 
 ### 7.2 Testing
 - [x] 7.2.1 Unit tests for all modules (target ≥80% coverage)
-- [ ] 7.2.2 Integration tests: commit DAG, branch/merge, tombstone, resolve
-- [ ] 7.2.3 Integration tests: ingest determinism (same input → same graph)
-- [ ] 7.2.4 Integration tests: retrieval (hybrid, budget, abstain, bi-temporal)
-- [ ] 7.2.5 Integration tests: code graph + impact analysis
-- [ ] 7.2.6 Integration tests: hooks capture + replay
-- [ ] 7.2.7 Cross-platform tests (Linux, macOS, Windows)
-- [ ] 7.2.8 Fuzz tests (ingest, retrieval, merge)
+- [x] 7.2.2 Integration tests: commit DAG, branch/merge, tombstone, resolve
+- [x] 7.2.3 Integration tests: ingest determinism (same input → same graph)
+- [x] 7.2.4 Integration tests: retrieval (hybrid, budget, abstain, bi-temporal)
+- [x] 7.2.5 Integration tests: code graph + impact analysis
+- [x] 7.2.6 Integration tests: hooks capture + replay
+- [x] 7.2.7 Cross-platform tests (Linux, macOS, Windows)
+- [x] 7.2.8 Fuzz tests (ingest, retrieval, merge)
 
 ### 7.3 Documentation
 - [x] 7.3.1 User guide (quickstart, concepts, config)
