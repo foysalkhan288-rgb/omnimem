@@ -312,7 +312,7 @@
 - [x] 5.7.1 File watcher (notify crate) per registered project
 - [x] 5.7.2 Per-session ownership (watch removed when last owner disconnects)
 - [x] 5.7.3 Re-index on change (incremental, hash-based skip)
-- [ ] 5.7.4 `auto_watch` global toggle
+- [x] 5.7.4 `auto_watch` global toggle
 
 ### 5.8 Cross-repo (basic)
 - [x] 5.8.1 Multi-repo workspace linking (`omnimem link <path>`)
